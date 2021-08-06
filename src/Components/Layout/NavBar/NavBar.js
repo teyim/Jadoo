@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./NavBar.css";
 import Button from "Components/Button/Button";
 import MenuDropdown from "Components/MenuDropdown/MenuDropdown";
 
