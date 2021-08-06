@@ -40,11 +40,43 @@ export default function Header() {
           <Calender></Calender>
         </div>
       </div>
+      <div className="hidden md:flex items-center my-2">
+        <p className="py-1 px-2 rounded-3xl text-gray-700 border shadow bg-blue-300">
+          Popular Bus routes
+        </p>
+        <div className="flex px-3 ">
+          <p className="py-1 px-1 rounded shadow border text-gray-700  bg-blue-200">
+            Bamenda
+          </p>
+          <SwitchHorizontalIcon className="w-6 h-6 my-auto text-gray-50"></SwitchHorizontalIcon>
+          <p className="py-1 px-1 rounded shadow border text-gray-700  bg-blue-200">
+            Douala
+          </p>
+        </div>
+        <div className="flex px-3 ">
+          <p className="py-1 px-1 rounded shadow border text-gray-700  bg-blue-200">
+            Buea
+          </p>
+          <SwitchHorizontalIcon className="w-6 h-6 my-auto text-gray-50"></SwitchHorizontalIcon>
+          <p className="py-1 px-1 rounded shadow border text-gray-700  bg-blue-200">
+            Douala
+          </p>
+        </div>
+        <div className="flex px-3 ">
+          <p className="py-1 px-1 rounded shadow border text-gray-700  bg-blue-200">
+            Bamenda
+          </p>
+          <SwitchHorizontalIcon className="w-6 h-6 my-auto text-gray-50"></SwitchHorizontalIcon>
+          <p className="py-1 px-1 rounded shadow border text-gray-700  bg-blue-200">
+            Yaounde
+          </p>
+        </div>
+      </div>
       <div>
         <Button
           customStyle={
             " " +
-            "bg-orange-500 text-gray-700 font-semibold hover:bg-gray-200 my-3 border shadow-md py-3 px-6"
+            "bg-orange text-white font-semibold hover:bg-orangeDark my-3 shadow-md py-3 px-6"
           }>
           Search Bus
         </Button>
