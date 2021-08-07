@@ -44,7 +44,7 @@ export default function NavBar() {
           </div>
           <div className="hidden md:flex my-auto space-x-1 font-medium">
             <a href="/" class="py-5 px-3 text-gray-700 hover:text-blue-700">
-              How it works
+              About
             </a>
             <a href="/" class="py-5 px-3 text-gray-700 hover:text-blue-700">
               Reviews
