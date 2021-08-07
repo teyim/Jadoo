@@ -1,13 +1,11 @@
 import React from "react";
-import NavBar from "./Components/Layout/NavBar/NavBar";
-import Header from "Components/Layout/Header/Header";
+import Home from "Views/Home";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <NavBar></NavBar>
-      <Header></Header>
+      <Home></Home>
     </>
   );
 }
