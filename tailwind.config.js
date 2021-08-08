@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        indigo: colors.indigo,
-        pink: colors.pink,
+        orange: "#FF7D68",
+        orangeDark: "#DF6951",
       },
     },
     fontFamily: {
