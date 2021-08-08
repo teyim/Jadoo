@@ -26,12 +26,12 @@ export default function AboutSection() {
     },
   ];
   return (
-    <div className="max-w-8xl font-rubik my-6">
-      <h1 className="text-blue-700 text-center font-bold text-4xl my-3">
+    <div className="max-w-8xl font-rubik md:my-20">
+      <h1 className="text-blue-700 text-center  text-xl md:text-left font-bold my-3 md:pl-20 ">
         About Jadoo
       </h1>
       <div className="md:flex md:px-20 px-6">
-        <div className="md:w-1/2  md:text-left text-center py-4">
+        <div className="md:w-1/2  md:text-left text-center ">
           <h1 className="text-3xl font-bold text-gray-700">
             Jadoo makes your bus ticket booking easier with 4 easy steps
           </h1>
@@ -49,7 +49,47 @@ export default function AboutSection() {
           </div>
         </div>
         <div className=" md:w-1/2 px-5 py-4 flex items-center justify-center ">
-          <div className="w-11/12 md:w-3/5 p-3 border border-blue-400 rounded-2xl shadow-lg h-full ">
+          <div className="absolute mb-10 ml-10">
+            <svg
+              width="554"
+              height="567"
+              viewBox="0 0 654 667"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <g opacity="0.8" filter="url(#filter0_f)">
+                <ellipse
+                  cx="327"
+                  cy="333.5"
+                  rx="177"
+                  ry="183.5"
+                  fill="#59B1E6"
+                />
+              </g>
+              <defs>
+                <filter
+                  id="filter0_f"
+                  x="0"
+                  y="0"
+                  width="654"
+                  height="667"
+                  filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="BackgroundImageFix"
+                    result="shape"
+                  />
+                  <feGaussianBlur
+                    stdDeviation="75"
+                    result="effect1_foregroundBlur"
+                  />
+                </filter>
+              </defs>
+            </svg>
+          </div>
+          <div className="z-50 w-11/12 md:w-3/5 p-3 border border-blue-400 rounded-2xl shadow-lg h-full bg-white">
             <img
               src={cityImage}
               alt="city"
