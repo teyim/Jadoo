@@ -1,5 +1,5 @@
 import React from "react";
-import cityImage from "../../../Assets/images/images.jpeg";
+import cityImage from "../../../Assets/images/cityimage.jpg";
 import {
   SelectorIcon,
   CashIcon,
@@ -50,7 +50,11 @@ export default function AboutSection() {
         </div>
         <div className=" md:w-1/2 px-5 py-4 flex items-center justify-center ">
           <div className="w-11/12 md:w-3/5 p-3 border border-blue-400 rounded-2xl shadow-lg h-full ">
-            <img src={cityImage} alt="city" className="rounded-md  w-full " />
+            <img
+              src={cityImage}
+              alt="city"
+              className="rounded-md h-30 w-full "
+            />
             <div className="flex justify-evenly mt-2 text-gray-700 font-medium">
               <div>
                 <SelectorIcon className="w-9 h-7 p-1 rounded bg-orange text-white"></SelectorIcon>
