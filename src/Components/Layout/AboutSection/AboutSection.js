@@ -1,5 +1,6 @@
 import React from "react";
 import cityImage from "../../../Assets/images/cityimage.jpg";
+import ellipse from "../../../Assets/images/Ellipse.svg";
 import {
   SelectorIcon,
   CashIcon,
@@ -26,15 +27,15 @@ export default function AboutSection() {
     },
   ];
   return (
-    <div className="max-w-8xl font-rubik md:my-20">
-      <h1 className="text-blue-700 text-center  text-xl md:text-left font-bold my-3 md:pl-20 ">
-        About Jadoo
-      </h1>
+    <div className="max-w-8xl font-rubik md:my-20 overflow-hidden">
       <div className="md:flex md:px-20 px-6">
         <div className="md:w-1/2  md:text-left text-center ">
-          <h1 className="text-3xl font-bold text-gray-700">
-            Jadoo makes your bus ticket booking easier with 4 easy steps
+          <h1 className="text-blue-700 font-boing font-bold my-3 text-xl">
+            About Jadoo
           </h1>
+          <h2 className="text-3xl font-bold font-boing text-gray-700">
+            Jadoo makes your bus ticket booking easier with 4 easy steps
+          </h2>
           <div className="text-gray-600 text-xl  md:text-lg md:grid md:grid-cols-2  my-3 font-normal">
             {steps.map((step, index) => {
               return (
@@ -49,45 +50,8 @@ export default function AboutSection() {
           </div>
         </div>
         <div className=" md:w-1/2 px-5 py-4 flex items-center justify-center ">
-          <div className="absolute mb-10 ml-10">
-            <svg
-              width="554"
-              height="567"
-              viewBox="0 0 654 667"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <g opacity="0.8" filter="url(#filter0_f)">
-                <ellipse
-                  cx="327"
-                  cy="333.5"
-                  rx="177"
-                  ry="183.5"
-                  fill="#59B1E6"
-                />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_f"
-                  x="0"
-                  y="0"
-                  width="654"
-                  height="667"
-                  filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB">
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="BackgroundImageFix"
-                    result="shape"
-                  />
-                  <feGaussianBlur
-                    stdDeviation="75"
-                    result="effect1_foregroundBlur"
-                  />
-                </filter>
-              </defs>
-            </svg>
+          <div className="absolute md:mb-10 md:ml-10">
+            <img src={ellipse} alt="ellipse"></img>
           </div>
           <div className="z-50 w-11/12 md:w-3/5 p-3 border border-blue-400 rounded-2xl shadow-lg h-full bg-white">
             <img
