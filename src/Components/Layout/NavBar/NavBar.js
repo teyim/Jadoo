@@ -47,10 +47,7 @@ export default function NavBar() {
               About
             </a>
             <a href="/" class="py-5 px-3 text-gray-700 hover:text-blue-700">
-              Reviews
-            </a>
-            <a href="/" class="py-5 px-3 text-gray-700 hover:text-blue-700">
-              Agencies
+              Testimonials
             </a>
           </div>
 
