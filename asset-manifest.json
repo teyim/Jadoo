@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Jadoo/static/css/main.26c83f18.chunk.css",
+    "main.js": "/Jadoo/static/js/main.04042d47.chunk.js",
+    "main.js.map": "/Jadoo/static/js/main.04042d47.chunk.js.map",
+    "runtime-main.js": "/Jadoo/static/js/runtime-main.2d369133.js",
+    "runtime-main.js.map": "/Jadoo/static/js/runtime-main.2d369133.js.map",
+    "static/js/2.12a84cdf.chunk.js": "/Jadoo/static/js/2.12a84cdf.chunk.js",
+    "static/js/2.12a84cdf.chunk.js.map": "/Jadoo/static/js/2.12a84cdf.chunk.js.map",
+    "index.html": "/Jadoo/index.html",
+    "static/css/main.26c83f18.chunk.css.map": "/Jadoo/static/css/main.26c83f18.chunk.css.map",
+    "static/js/2.12a84cdf.chunk.js.LICENSE.txt": "/Jadoo/static/js/2.12a84cdf.chunk.js.LICENSE.txt",
+    "static/media/Ellipse.19c3b1a2.svg": "/Jadoo/static/media/Ellipse.19c3b1a2.svg",
+    "static/media/cityimage.551409f1.jpg": "/Jadoo/static/media/cityimage.551409f1.jpg",
+    "static/media/github.c5af0a5c.svg": "/Jadoo/static/media/github.c5af0a5c.svg",
+    "static/media/linkedin.34246e9f.svg": "/Jadoo/static/media/linkedin.34246e9f.svg",
+    "static/media/twitter.eabd0089.svg": "/Jadoo/static/media/twitter.eabd0089.svg",
+    "static/media/up.df1b7528.svg": "/Jadoo/static/media/up.df1b7528.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2d369133.js",
+    "static/js/2.12a84cdf.chunk.js",
+    "static/css/main.26c83f18.chunk.css",
+    "static/js/main.04042d47.chunk.js"
+  ]
+}
