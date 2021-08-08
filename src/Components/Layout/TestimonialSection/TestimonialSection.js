@@ -3,7 +3,7 @@ import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/outline";
 
 export default function TestimonialSection() {
   return (
-    <div className="max-w-8xl text-center md:text-left font-boing md:flex overflow-hidden">
+    <div className="max-w-8xl text-center md:text-left font-boing md:flex overflow-hidden md:mb-20">
       <div className="md:px-20 px-6 w-full md:flex">
         <div className="flex-col justify-between">
           <h1 className="text-blue-700 font-bold my-3 text-xl">Testimonials</h1>
@@ -29,8 +29,8 @@ export default function TestimonialSection() {
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt=""
             />
-            <div className="w-3/4 shadow-xl rounded p-2 border md:ml-10 md:mb-5 mx-auto my-2 md:my-0">
-              <p className="text-gray-700  font-rubik text-lg my-2">
+            <div className="w-3/4 shadow-xl rounded py-2 px-4 border md:ml-10 md:mb-5 mx-auto my-2 md:my-0">
+              <p className="text-gray-500  font-rubik text-lg my-2">
                 "I love Jadoo,booking my bus ticket has never been easier.i can
                 just book my tickets within seconds rather than following long
                 queues at Agencies,love it."
@@ -40,9 +40,9 @@ export default function TestimonialSection() {
               </h1>
             </div>
           </div>
-          <div className="hidden md:flex md:flex-col my-auto">
-            <ChevronUpIcon className="w-4 h-4 "></ChevronUpIcon>
-            <ChevronDownIcon className="w-4 h-4"></ChevronDownIcon>
+          <div className="hidden md:flex md:flex-col my-auto shadow-sm p-2 border rounded-2xl">
+            <ChevronUpIcon className="w-4 h-4 my-2 "></ChevronUpIcon>
+            <ChevronDownIcon className="w-4 h-4 my-2"></ChevronDownIcon>
           </div>
         </div>
       </div>
