@@ -12,8 +12,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      boing: ["GD Boing", "cursive"],
-      comfortaa: ["Comfortaa", "cursive"],
+      boing: ["GDBoingBold", "cursive"],
       rubik: ["Rubik", "sans-serif"],
     },
   },
