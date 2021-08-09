@@ -1,5 +1,6 @@
 import React from "react";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/outline";
+import whiteManImage from "../../../Assets/images/whiteman.jpeg";
 
 export default function TestimonialSection() {
   return (
@@ -26,8 +27,8 @@ export default function TestimonialSection() {
           <div className="md:w-11/12 ">
             <img
               className=" z-20 md:w-2/12 w-1/6 self-center mx-auto md:mx-2 rounded-2xl border border-blue-600  my-auto shadow-lg"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
+              src={whiteManImage}
+              alt="white man"
             />
             <div className="w-3/4 shadow-xl rounded py-2 px-4 border md:ml-10 md:mb-5 mx-auto my-2 md:my-0">
               <p className="text-gray-500  font-rubik text-lg my-2">

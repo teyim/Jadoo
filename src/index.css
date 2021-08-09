@@ -1,1 +1,4 @@
-
+@font-face {
+  font-family: "GDBoingBold";
+  src: local("GDBoingBold"), url("./Font/GDBoingBold.ttf") format("truetype");
+}
