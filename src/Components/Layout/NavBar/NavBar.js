@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "Components/Button/Button";
-import MenuDropdown from "Components/MenuDropdown/MenuDropdown";
+import MenuDropdown from "Components/NavbarDropdown/NavbarDropdown";
 
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
