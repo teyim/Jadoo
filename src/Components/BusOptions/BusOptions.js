@@ -27,7 +27,7 @@ export default function BusOptions() {
          </h1>
          <FaCrown className="w-4 h-4 mx-1 my-auto text-orangeDark"></FaCrown>
         </div>
-        <p>Non AC Seater/Sleeper PersonalScreen</p>
+        <p className="text-center md:text-left">Non AC Seater/Sleeper PersonalScreen</p>
        </div>
        <div className="flex justify-between my-2 w-full md:w-2/4 items-center">
         <div>
