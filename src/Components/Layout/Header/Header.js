@@ -3,8 +3,10 @@ import SelectMenu from "Components/SelectMenu/SelectMenu";
 import { SwitchHorizontalIcon } from "@heroicons/react/outline";
 import Calender from "Components/Calender/Calender";
 import Button from "Components/Button/Button";
+import { useHistory } from "react-router";
 
 export default function Header() {
+  const history =useHistory();
   const routes = [
     { from: "Bamenda", to: "Douala" },
     { from: "Bamenda", to: "Yaounde" },
@@ -67,6 +69,7 @@ export default function Header() {
       </div>
       <div>
         <Button
+          click={()=>history.push('/searchbus')}      
           customStyle={
             " " +
             "bg-orange text-white font-semibold hover:bg-orangeDark my-3 shadow-md py-3 px-6"
