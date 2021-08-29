@@ -1,98 +1,186 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import { GiSteeringWheel } from "react-icons/gi";
 import Button from "Components/Button/Button";
 
 export default function BusSeat() {
+ const [selectedSeats, setSelectedSeats] = useState([]);
+ const [fare,setFare]=useState(0)
  const [Seats, setSeats] = useState({
-  Row1: {
-   Seats: {
-    1: "booked",
-    2: "free",
-    3: "free",
-    4: "booked",
-    5: "booked",
-    6: "booked",
-    7: "free",
-    8: "booked",
-    9: "free",
-    10: "free",
-    11: "free",
-    12: "booked",
-   },
-  },
-  Row2: {
-   Seats: {
-    13: "free",
-    14: "free",
-    15: "booked",
-    16: "booked",
-    17: "booked",
-    18: "free",
-    19: "booked",
-    20: "free",
-    21: "free",
-    22: "free",
-    23: "booked",
-    24: "free",
-   },
-  },
+  Row1: [
+   { seatNumber: 1, status: "booked" },
+   { seatNumber: 2, status: "booked" },
+   { seatNumber: 3, status: "free" },
+   { seatNumber: 4, status: "booked" },
+   { seatNumber: 5, status: "free" },
+   { seatNumber: 6, status: "booked" },
+   { seatNumber: 7, status: "booked" },
+   { seatNumber: 8, status: "free" },
+   { seatNumber: 9, status: "free" },
+   { seatNumber: 10, status: "free" },
+   { seatNumber: 11, status: "free" },
+   { seatNumber: 12, status: "booked" },
+  ],
+  Row2: [
+   { seatNumber: 13, status: "booked" },
+   { seatNumber: 14, status: "booked" },
+   { seatNumber: 15, status: "free" },
+   { seatNumber: 16, status: "booked" },
+   { seatNumber: 17, status: "free" },
+   { seatNumber: 18, status: "free" },
+   { seatNumber: 19, status: "booked" },
+   { seatNumber: 20, status: "free" },
+   { seatNumber: 21, status: "free" },
+   { seatNumber: 22, status: "free" },
+   { seatNumber: 23, status: "free" },
+   { seatNumber: 24, status: "booked" },
+  ],
  });
+   
+ useEffect(()=>{
+  setFare(prevState=>{
+    const seatCost=5000*selectedSeats.length
+    return seatCost
+  })
+ },[selectedSeats])
+
+ const handleSelectedSeat = (seatNumber, RowNumber) => {
+  if (RowNumber === "Row1") {
+   setSeats((prevState) => ({
+    Row1: prevState.Row1.map((seat) => {
+     if (
+      seat.seatNumber === seatNumber &&
+      seat.status !== "selected" &&
+      selectedSeats.length < 4
+     ) {
+      setSelectedSeats((prevState) => [...prevState, seatNumber]);
+      return { ...seat, status: "selected" };
+     } else if (seat.seatNumber === seatNumber && seat.status === "selected") {
+      setSelectedSeats((prevState) =>
+       prevState.filter(
+        (SelectedSeatNumber) => SelectedSeatNumber !== seatNumber,
+       ),
+      );
+      return { ...seat, status: "free" };
+     } else {
+      return seat;
+     }
+    }),
+    Row2: prevState.Row2,
+   }));
+  } else
+   setSeats((prevState) => ({
+    Row1: prevState.Row1,
+    Row2: prevState.Row2.map((seat) => {
+     if (
+      seat.seatNumber === seatNumber &&
+      seat.status !== "selected" &&
+      selectedSeats.length < 4
+     ) {
+      setSelectedSeats((prevState) => [...prevState, seatNumber]);
+      return { ...seat, status: "selected" };
+     } else if (seat.seatNumber === seatNumber && seat.status === "selected") {
+      setSelectedSeats((prevState) =>
+       prevState.filter(
+        (SelectedSeatNumber) => SelectedSeatNumber !== seatNumber,
+       ),
+      );
+      return { ...seat, status: "free" };
+     } else {
+      return seat;
+     }
+    }),
+   }));
+ };
+
+ const handleSeatClicked = (seatNumber, rowNumber) => {
+  handleSelectedSeat(seatNumber, rowNumber);
+  if (selectedSeats.length === 4) {
+   alert("Cannot book more than 4 seats");
+  }
+ };
 
  return (
   <div className="md:px-9 px-2 my-3 font-rubik">
    <hr></hr>
+   <h1 className="font-rubik text-xl font-medium text-gray-600 mt-3 text-center mb-0">Select bus seats</h1>
    <div className=" bg-white md:px-4 w-full py-8 md:flex ">
     <div className="md:w-3/4 w-full h-48 flex border rounded border-gray-300 ">
      <div className="w-1/6 h-full flex flex-col justify-end p-5 ">
       <GiSteeringWheel className="w-8 h-8"></GiSteeringWheel>
      </div>
-     <div className="w-full flex flex-col content-between  pt-4">
+     <div className="w-full flex flex-col content-between pt-4">
       <div className="w-11/12 h-2/4 pl-4 ">
        <div class="grid grid-cols-6 gap-2 overflow-hidden">
-        {Object.entries(Seats.Row1.Seats).map((seat, i) => {
-         if (seat[1] === "free") {
+        {Seats?.Row1.map((seat, i) => {
+         if (seat.status === "free") {
           return (
            <div
-            className="border rounded bg-gray-300 text-center hover:bg-green-500 "
-            key={i}>
-            <div className="w-4/5 mx-auto text-center bg-gray-400 hover:bg-green-600 border-2 rounded cursor-pointer">
-             {seat[0]}
+            className="border rounded bg-gray-300 text-center"
+            key={i}
+            onClick={() => handleSeatClicked(seat.seatNumber, "Row1")}>
+            <div className="w-4/5 mx-auto text-center bg-gray-400  border-2 rounded cursor-pointer">
+             {seat.seatNumber}
             </div>
            </div>
           );
-         } else
+         } else if (seat.status === "selected") {
+          return (
+           <div
+            className="border rounded bg-green-500 text-center"
+            key={i}
+            onClick={() => handleSeatClicked(seat.seatNumber, "Row1")}>
+            <div className="w-4/5 mx-auto text-center  bg-green-600 border-2 rounded cursor-pointer">
+             {seat.seatNumber}
+            </div>
+           </div>
+          );
+         } else {
           return (
            <div className="border rounded bg-gray-500 text-center" key={i}>
             <div className="w-4/5 mx-auto text-center bg-gray-500  border-2 rounded cursor-not-allowed">
-             {seat[0]}
+             {seat.seatNumber}
             </div>
            </div>
           );
+         }
         })}
        </div>
       </div>
 
       <div className="w-11/12 h-2/4 pl-4 ">
        <div class="grid grid-cols-6 gap-2 overflow-hidden">
-        {Object.entries(Seats.Row2.Seats).map((seat, i) => {
-         if (seat[1] === "free") {
+        {Seats?.Row2?.map((seat, i) => {
+         if (seat.status === "free") {
           return (
            <div
-            className="border rounded bg-gray-300 text-center hover:bg-green-500 "
-            key={i}>
-            <div className="w-4/5 mx-auto text-center bg-gray-400 hover:bg-green-600 border-2 rounded cursor-pointer">
-             {seat[0]}
+            className="border rounded bg-gray-300 text-center  "
+            key={i}
+            onClick={() => handleSeatClicked(seat.seatNumber, "Row2")}>
+            <div className="w-4/5 mx-auto text-center bg-gray-400 border-2 rounded cursor-pointer">
+             {seat.seatNumber}
             </div>
            </div>
           );
-         } else
+         } else if (seat.status === "selected") {
+          return (
+           <div
+            className="border rounded bg-green-500 text-center"
+            key={i}
+            onClick={() => handleSeatClicked(seat.seatNumber, "Row2")}>
+            <div className="w-4/5 mx-auto text-center  bg-green-600 border-2 rounded cursor-pointer">
+             {seat.seatNumber}
+            </div>
+           </div>
+          );
+         } else {
           return (
            <div className="border rounded bg-gray-500 text-center" key={i}>
             <div className="w-4/5 mx-auto text-center bg-gray-500  border-2 rounded cursor-not-allowed">
-             {seat[0]}
+             {seat.seatNumber}
             </div>
            </div>
           );
+         }
         })}
        </div>
       </div>
@@ -102,15 +190,15 @@ export default function BusSeat() {
      <div className="px-3 flex flex-col  h-full justify-evenly">
       <div className="flex justify-between ">
        <p>Seat(s)</p>
-       <p className="font-semibold">2, 3, 4, 5</p>
+       <p className="font-semibold">{selectedSeats.join(",")}</p>
       </div>
       <div className="flex justify-between">
        <p>Fare</p>
-       <p className="font-semibold">15000</p>
+       <p className="font-semibold">{fare}</p>
       </div>
       <div className="flex justify-between ">
        <p className="font-semibold">Total</p>
-       <p className="font-semibold">15,500fcfa</p>
+       <p className="font-semibold">{`${fare}FcFa`}</p>
       </div>
       <Button
        click={() => alert("hello")}
