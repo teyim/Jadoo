@@ -94,8 +94,8 @@ export default function BusSeat() {
 
  const handleSeatClicked = (seatNumber, rowNumber) => {
   handleSelectedSeat(seatNumber, rowNumber);
-  if (selectedSeats.length === 4) {
-   alert("Cannot book more than 4 seats");
+  if (selectedSeats?.length === 4) {
+   console.log("Cannot book more than 4 seats");
   }
  };
 
@@ -201,10 +201,11 @@ export default function BusSeat() {
        <p className="font-semibold">{`${fare}FcFa`}</p>
       </div>
       <Button
-       click={() => alert("hello")}
+             click={() => alert("hello")}
+             disabled={selectedSeats?.length < 1}
        customStyle={
         " " +
-        "bg-green-400 text-white font-semibold hover:bg-green-500 mx-auto mt-2 md:mt-0 shadow-md py-3 px-6 "
+         `${selectedSeats?.length < 1 ? ' cursor-not-allowed opacity-60 ' : ''} bg-green-400 text-white font-semibold hover:bg-green-500 mx-auto mt-2 md:mt-0 shadow-md py-3 px-6 `
        }>
        Continue
       </Button>
