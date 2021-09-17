@@ -10,7 +10,7 @@ import BusSeat from "Components/BusSeat/BusSeat";
 export default function BusOptions() {
  const [showSeats, setShowSeats] = useState(false);
  const toggleBusSeatsVisibility = () => {
-  setShowSeats(!showSeats);
+  setShowSeats(prevState=>!prevState);
  };
 
  return (
