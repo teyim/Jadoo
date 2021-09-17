@@ -11,8 +11,8 @@ import BusOptions from "Components/BusOptions/BusOptions";
 export default function SearchBus() {
  return (
   <>
-   <NavBar></NavBar>
-
+ <NavBar disabled></NavBar>
+ 
    <div className="bg-blue-600 md:pt-1 md:pb-2 border-b-2 px-4 flex flex-col items-center md:flex-row md:justify-evenly md:align-baseline">
     <div>
      <h1 className="text-2xl text-white my-auto md:my-0 text-center md:text-left font-semibold">

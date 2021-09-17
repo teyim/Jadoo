@@ -3,22 +3,7 @@ import Button from "Components/Button/Button";
 import MenuDropdown from "Components/NavbarDropdown/NavbarDropdown";
 import { Link } from "react-router-dom";
 
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-
-const navigation = [
- { name: "How it works", href: "#", current: false },
- { name: "Reviews", href: "#", current: false },
- { name: "Agencies", href: "#", current: false },
-];
-
-function classNames(...classes) {
- return classes.filter(Boolean).join(" ");
-}
-
-export default function NavBar() {
+export default function NavBar({disabled}) {
  const [openmobilemenu, setOpenMobileMenu] = useState(false);
  const [isAuth, setIsAuth] = useState(false);
 
@@ -43,17 +28,18 @@ export default function NavBar() {
        Jadoo.
       </Link>
      </div>
-     <div className="hidden md:flex my-auto space-x-1 font-medium">
-      <Link href="/about" className="py-5 px-3 text-gray-700 hover:text-blue-700">
-       About
-      </Link>
-      <Link
-       href="/testimonials"
-       className="py-5 px-3 text-gray-700 hover:text-blue-700">
-       Testimonials
-      </Link>
-     </div>
-
+                 {!disabled?
+                     (<div className="hidden md:flex my-auto space-x-1 font-medium">
+                         <Link href="/about" className="py-5 px-3 text-gray-700 hover:text-blue-700">
+                             About
+                         </Link>
+                         <Link
+                             href="/testimonials"
+                             className="py-5 px-3 text-gray-700 hover:text-blue-700">
+                             Testimonials
+                         </Link>
+                     </div>):null
+                 }
      {isAuth ? (
       <MenuDropdown customStyle=" hidden md:flex"></MenuDropdown>
      ) : (
@@ -88,7 +74,8 @@ export default function NavBar() {
    </div>
    {openmobilemenu ? (
     <div className=" md:hidden text-center text-gray-700 flex flex-col content-evenly">
-     <Link to="/Jadoo" class=" py-3 text-sm hover:bg-blue-400 border-2">
+    {!disabled?
+    (<><Link to="/Jadoo" class=" py-3 text-sm hover:bg-blue-400 border-2">
       About
      </Link>
      <Link to="/Jadoo" class=" py-3 text-sm hover:bg-blue-400 border-b-2">
@@ -96,9 +83,10 @@ export default function NavBar() {
      </Link>
      <Link to="/Jadoo" class=" py-3 text-sm hover:bg-blue-400 border-b-2">
       Agencies
-     </Link>
+     </Link></>):null
+     }  
      {isAuth ? (
-      <div className=" font-medium font-light text-blue-700 flex flex-col">
+      <div className="font-light text-blue-700 flex flex-col">
        <a
         href="/"
         class=" py-3 text-sm hover:bg-blue-400 border-b-2 border-t-4 hover:text-white ">
