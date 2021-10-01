@@ -14,11 +14,11 @@ export default function SearchBus() {
  <NavBar disabled></NavBar>
  
    <div className="bg-blue-600 md:pt-1 md:pb-2 border-b-2 px-4 flex flex-col items-center md:flex-row md:justify-evenly md:align-baseline">
-    <div>
+       <div className='md:w-1/4 w-9/12 '>
      <h1 className="text-2xl text-white my-auto md:my-0 text-center md:text-left font-semibold">
       From
      </h1>
-     <SelectMenu customStyle=""></SelectMenu>
+         <SingleSelect height={40}></SingleSelect>
     </div>
     <div className="my-3 md:my-0">
      <button
@@ -27,11 +27,11 @@ export default function SearchBus() {
       <SwitchHorizontalIcon className="w-5 h-5 text-white"></SwitchHorizontalIcon>
      </button>
     </div>
-    <div>
+       <div className='md:w-1/4 w-9/12'>
      <h1 className="text-2xl text-white text-center md:text-left font-semibold">
       To
      </h1>
-     <SelectMenu customStyle=""></SelectMenu>
+         <SingleSelect height={40}></SingleSelect>
     </div>
     <div className="my-3 md:my-0">
      <h1 className="text-2xl text-center text-white md:text-left font-semibold">
@@ -56,7 +56,7 @@ export default function SearchBus() {
     <div className="md:w-1/2 w-full md:flex  md:justify-evenly ">
      <div className=" md:w-1/4 w-4/5 mx-auto my-2 md:my-0">
       <p className="font-rubik font-medium text-lg text-gray-600">Bus type</p>
-      <SingleSelect></SingleSelect>
+           <SingleSelect height={10}></SingleSelect>
      </div>
      <div className=" md:w-1/3 w-4/5 mx-auto my-2 md:my-0">
       <p className="font-rubik font-medium text-lg text-gray-600">
