@@ -1,9 +1,9 @@
 import React from "react";
-import SelectMenu from "Components/SelectMenu/SelectMenu";
 import { SwitchHorizontalIcon } from "@heroicons/react/outline";
 import Calender from "Components/Calender/Calender";
 import Button from "Components/Button/Button";
 import { useHistory } from "react-router";
+import SingleSelect from "Components/CustomSelect/SingleSelect";
 
 export default function Header() {
   const history =useHistory();
@@ -12,6 +12,14 @@ export default function Header() {
     { from: "Bamenda", to: "Yaounde" },
     { from: "Limbe", to: "Douala" },
     { from: "Buea", to: "Maroua" },
+  ];
+  const locations = [
+    { name: "Bamenda" },
+    { name: "Buea" },
+    { name: "Douala" },
+    { name: "Yaounde" },
+    { name: "Kumba" },
+    { name: "Baffousam" },
   ];
 
   return (
@@ -25,11 +33,11 @@ export default function Header() {
         A step closer to your Destination
       </h1>
       <div className=" my-4 md:w-4/5 w-11/12 bg-gray-100 border-2 border-gray-200 shadow-sm rounded-md py-5 px-4 flex flex-col items-center md:flex-row md:justify-evenly md:align-baseline">
-        <div>
+        <div className='md:w-1/4 w-9/12'>
           <h1 className="text-2xl my-auto md:my-0 text-center md:text-left font-semibold">
             From
           </h1>
-          <SelectMenu customStyle=""></SelectMenu>
+          <SingleSelect height={40}></SingleSelect>
         </div>
         <div className="my-3 md:my-0">
           <button
@@ -38,11 +46,11 @@ export default function Header() {
             <SwitchHorizontalIcon className="w-5 h-5"></SwitchHorizontalIcon>
           </button>
         </div>
-        <div>
+        <div className='md:w-1/4 w-9/12'>
           <h1 className="text-2xl text-center md:text-left font-semibold">
             To
           </h1>
-          <SelectMenu customStyle=""></SelectMenu>
+          <SingleSelect height={40}></SingleSelect>
         </div>
         <div className="my-3 md:my-0">
           <h1 className="text-2xl text-center md:text-left font-semibold">
