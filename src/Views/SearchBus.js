@@ -1,6 +1,5 @@
 import React from "react";
 import NavBar from "Components/Layout/NavBar/NavBar";
-import SelectMenu from "Components/SelectMenu/SelectMenu";
 import { SwitchHorizontalIcon } from "@heroicons/react/outline";
 import Calender from "Components/Calender/Calender";
 import Button from "Components/Button/Button";
