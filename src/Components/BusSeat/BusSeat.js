@@ -1,9 +1,12 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { GiSteeringWheel } from "react-icons/gi";
+import { AiOutlineWarning} from "react-icons/ai"
 import Button from "Components/Button/Button";
 
 export default function BusSeat() {
- const [selectedSeats, setSelectedSeats] = useState([]);
+  const history = useHistory();
+  const [selectedSeats, setSelectedSeats] = useState([]);
  const [fare,setFare]=useState(0)
  const [Seats, setSeats] = useState({
   Row1: [
@@ -94,15 +97,13 @@ export default function BusSeat() {
 
  const handleSeatClicked = (seatNumber, rowNumber) => {
   handleSelectedSeat(seatNumber, rowNumber);
-  if (selectedSeats?.length === 4) {
-   console.log("Cannot book more than 4 seats");
-  }
  };
 
  return (
   <div className="md:px-9 px-2 my-3 font-rubik">
    <hr></hr>
-   <h1 className="font-rubik text-xl font-medium text-gray-600 mt-3 text-center mb-0">Select bus seats</h1>
+   <h1 className="font-rubik text-xl font-medium text-gray-600 mt-3 text-center ">Select bus seats</h1>
+  {selectedSeats?.length === 4 ? <h2 className="font-rubik text-md font-medium text-red-400 text-center mb-0"><AiOutlineWarning className="w-5 h-5 my-auto mb-1 inline"/>Cannot book more than 4 seats</h2>:null}
    <div className=" bg-white md:px-4 w-full py-8 md:flex ">
     <div className="md:w-3/4 w-full h-48 flex border rounded border-gray-300 ">
      <div className="w-1/6 h-full flex flex-col justify-end p-5 ">
@@ -201,8 +202,8 @@ export default function BusSeat() {
        <p className="font-semibold">{`${fare}FcFa`}</p>
       </div>
       <Button
-             click={() => alert("hello")}
-             disabled={selectedSeats?.length < 1}
+      click={() => history.push('/review')}
+      disabled={selectedSeats?.length < 1}
        customStyle={
         " " +
          `${selectedSeats?.length < 1 ? ' cursor-not-allowed opacity-60 ' : ''} bg-green-400 text-white font-semibold hover:bg-green-500 mx-auto mt-2 md:mt-0 shadow-md py-3 px-6 `
