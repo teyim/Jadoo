@@ -4,9 +4,9 @@ import linkedInLogo from "../../../Assets/images/linkedin.svg";
 import twitterLogo from "../../../Assets/images/twitter.svg";
 import arrowUp from "../../../Assets/images/up.svg";
 
-export default function Footer() {
+export default function Footer({ customStyle}) {
   return (
-    <div className="max-w-8xl bg-gray-200 py-5 px-20 font-rubik">
+    <div className={"max-w-8xl bg-gray-200 py-5 px-20 font-rubik"+ customStyle}>
       <div className="md:flex">
         <div className="md:w-1/4 w-full text-center md:text-left mb-3 md:my-0">
           <a
