@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import SearchBus from "Views/SearchBus";
+import ReviewBooking from "Views/ReviewBooking";
 import { store } from "./Store/store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -15,6 +16,7 @@ const Routing = () => {
    <Switch>
     <Route exact path="/Jadoo" component={App}></Route>
     <Route path="/searchbus" component={SearchBus}></Route>
+    <Route path="/review" component={ReviewBooking}></Route>
    </Switch>
   </Router>
  );
