@@ -1,12 +1,17 @@
 import React from "react";
-import Select from "react-select";
+import Select from 'react-select';
 
-export default function SingleSelect() {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
 
-  return <Select options={options}></Select>;
+export default function SingleSelect({height,data}) {
+  const inputStyle = () => ({
+    alignItems: 'center',
+    display: 'flex',
+      height: height,
+  });
+  const colourStyles={
+    input: (styles) => ({ ...styles, ...inputStyle() }),
+  };
+
+
+  return <Select options={data} styles={colourStyles}></Select>;
 }
