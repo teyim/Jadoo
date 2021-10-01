@@ -27,8 +27,8 @@ export default function ReviewBooking() {
                     <h1 className="text-center text-2xl font-medium text-white my-2"> Bamenda-Yaounde | <span className="font-light">18 September 2021</span> </h1>
                 </div>
                 <div className="absolute w-full max-w-screen-2xl top-3/4  z-10 mx-auto">
-                    <div className='w-full flex justify-evenly mb-8'>
-                    <div className='w-3/5'>
+                    <div className='w-full flex lg:flex-row flex-col lg:justify-evenly mb-8 '>
+                    <div className='lg:w-3/5 w-11/12 mx-auto'>
                         <div className="rounded  shadow-sm bg-blue-100  px-3 py-5 ">
                             <div className="md:flex flex-col md:flex-row justify-evenly">
                                 <div className='my-auto'>
@@ -77,16 +77,16 @@ export default function ReviewBooking() {
                             <div className='p-2'>
                                 <h3 className='text-gray-500'>please make sure you enter your name as on your Government ID card</h3>
                                 <div className='py-3 px-4 border rounded my-2'>
-                                    <div className='flex border-b'>
+                                        <div className='flex border-b'>
                                         <p className='mr-2 font-medium'>Seat Number</p>
                                         <p className='text-green-600'>1</p>
                                     </div>
-                                    <div className='mt-2 flex justify-evenly'>
+                                        <div className='md:mt-2  my-1 md:my-0 md:flex justify-evenly'>
                                         <div className='md:w-1/4'>
                                             <p>Gender</p>
                                             <SingleSelect height={37} data={genders}></SingleSelect>
                                         </div>
-                                        <div>
+                                        <div className='my-1 md:my-0'>
                                             <p>Full Name</p>
                                             <Input placeholder='Enter full name' type='text'></Input>
                                         </div>
@@ -104,8 +104,8 @@ export default function ReviewBooking() {
                                 <h1 className='text-xl font-medium'>Loggage</h1>
                             </div>
                             <hr></hr>
-                            <div className='flex '>
-                                <div className='p-2 md:w-1/3'>
+                            <div className='flex w-full'>
+                                <div className='p-2 md:w-1/3 w-full'>
                                     <p>Loggage type</p>
                                     <GroupSelect height={37}></GroupSelect>
                                 </div>
@@ -116,7 +116,7 @@ export default function ReviewBooking() {
                                 <h1 className='text-xl font-medium'>Personal Information</h1>
                             </div>
                             <hr></hr>
-                            <div className='flex '>
+                            <div className='md:flex '>
                             <div className='p-2 md:w-1/3'>
                                 <p>Email</p>
                                 <Input placeholder='Enter Email address' type='mail'></Input>
@@ -128,7 +128,7 @@ export default function ReviewBooking() {
                             </div>
                         </div>
                     </div>
-                    <div className='w-3/12'>
+                    <div className='lg:w-3/12 w-11/12 mx-auto'>
                         <div className="my-2 shadow-sm md:my-0 border rounded flex flex-col py-4 md:mx-3 bg-blue-100 ">
                             <div className="px-3 flex flex-col h-full justify-evenly">
                                 <div className="flex justify-between ">
@@ -149,7 +149,7 @@ export default function ReviewBooking() {
                                         " " +
                                         ` bg-green-400 text-white font-semibold hover:bg-green-500 mx-auto mt-2 md:mt-0 shadow-md py-3 px-8 `
                                     }>
-                                    Make payment
+                                   Proceed to Payment
                                 </Button>
                             </div>
                         </div>
