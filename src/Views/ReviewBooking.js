@@ -26,7 +26,7 @@ export default function ReviewBooking() {
                     <h1 className="text-center text-3xl font-semibold text-white my-2">Review your Booking</h1>
                     <h1 className="text-center text-2xl font-medium text-white my-2"> Bamenda-Yaounde | <span className="font-light">18 September 2021</span> </h1>
                 </div>
-                <div className="absolute w-full max-w-screen-2xl top-3/4  z-10 mx-auto">
+                <div className="absolute w-full  top-3/4  z-10 mx-auto">
                     <div className='w-full flex lg:flex-row flex-col lg:justify-evenly mb-8 '>
                     <div className='lg:w-3/5 w-11/12 mx-auto'>
                         <div className="rounded  shadow-sm bg-blue-100  px-3 py-5 ">
@@ -144,7 +144,7 @@ export default function ReviewBooking() {
                                     <p className="font-semibold">78,003FcFa</p>
                                 </div>
                                 <Button
-                                    click={() => history.push('/review')}
+                                    click={() => history.push('/payment')}
                                     customStyle={
                                         " " +
                                         ` bg-green-400 text-white font-semibold hover:bg-green-500 mx-auto mt-2 md:mt-0 shadow-md py-3 px-8 `
