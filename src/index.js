@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import SearchBus from "Views/SearchBus";
 import ReviewBooking from "Views/ReviewBooking";
+import Payment from "Views/Payment";
 import { store } from "./Store/store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -17,6 +18,7 @@ const Routing = () => {
     <Route exact path="/Jadoo" component={App}></Route>
     <Route path="/searchbus" component={SearchBus}></Route>
     <Route path="/review" component={ReviewBooking}></Route>
+    <Route path="/payment" component={Payment}></Route>
    </Switch>
   </Router>
  );
