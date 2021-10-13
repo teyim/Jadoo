@@ -2,7 +2,7 @@ import React from "react";
 import Select from 'react-select';
 
 
-export default function SingleSelect({height,data}) {
+export default function SingleSelect({height,data,chosenOption}) {
   const inputStyle = () => ({
     alignItems: 'center',
     display: 'flex',
@@ -13,5 +13,5 @@ export default function SingleSelect({height,data}) {
   };
 
 
-  return <Select options={data} styles={colourStyles}></Select>;
+  return <Select options={data} styles={colourStyles} onChange={value => chosenOption(value)}></Select>;
 }
