@@ -10,7 +10,7 @@ import {
 export default function MenuDropdown(props) {
   const { customStyle } = props;
   return (
-    <div className={customStyle + " my-auto text-right font-rubik "}>
+    <div className={customStyle + " my-auto text-right font-rubik z-50 "}>
       <Menu as="div" className="relative inline-block text-left">
         <div className="">
           <Menu.Button className="inline-flex justify-evenly  w-full px-4 py-2 text-sm font-medium text-gray-700 text-md rounded-md ">
