@@ -53,7 +53,7 @@ export default function AboutSection() {
           <div className="absolute md:mb-10 md:ml-10">
             <img src={ellipse} alt="ellipse"></img>
           </div>
-          <div className="z-50 w-11/12 md:w-3/5 p-3 border border-blue-400 rounded-2xl shadow-lg h-full bg-white">
+          <div className="z-20 w-11/12 md:w-3/5 p-3 border border-blue-400 rounded-2xl shadow-lg h-full bg-white">
             <img
               src={cityImage}
               alt="city"
