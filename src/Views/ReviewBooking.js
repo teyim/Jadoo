@@ -10,6 +10,7 @@ import Input from "Components/Input/Input"
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input/input'
 import Footer from 'Components/Layout/Footer/Footer';
+import { ModalProvider } from 'Context/context';
 
 export default function ReviewBooking() {
     const [value, setValue] = useState()
@@ -20,6 +21,7 @@ export default function ReviewBooking() {
     const history = useHistory();
     return (
         <>
+        <ModalProvider>
             <NavBar disabled></NavBar>
             <div className="relative font-rubik text-gray-700">
                 <div className="bg-blue-600 md:pt-1 md:pb-2 border-b-2 p-2 h-40 ">
@@ -158,6 +160,7 @@ export default function ReviewBooking() {
                    <Footer></Footer>
                 </div>
             </div>
+            </ModalProvider>
         </>
     )
 }

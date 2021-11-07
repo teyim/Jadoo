@@ -4,6 +4,7 @@ import Button from "Components/Button/Button";
 import { useHistory } from "react-router";
 import SingleSelect from 'Components/CustomSelect/SingleSelect';
 import Footer from 'Components/Layout/Footer/Footer';
+import { ModalProvider } from 'Context/context';
 
 
 
@@ -23,6 +24,7 @@ const Payment = () => {
   
     return (
         <>
+        <ModalProvider>
             <NavBar disabled></NavBar>
             <div className="relative font-rubik text-gray-700">
                 <div className="bg-blue-600 md:pt-1 md:pb-2 border-b-2 p-2 h-40 ">
@@ -88,6 +90,7 @@ const Payment = () => {
                     <Footer></Footer>
                 </div>
             </div>
+            </ModalProvider>
         </>
     )
 }

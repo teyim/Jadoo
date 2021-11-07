@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Button from "Components/Button/Button";
 import MenuDropdown from "Components/NavbarDropdown/NavbarDropdown";
 import { Link } from "react-router-dom";
+import { ModalContext } from "../../../Context/context";
+import Auth from "Components/Auth/Auth";
+import Signup from "Components/Auth/Signup";
+
 
 export default function NavBar({disabled}) {
  const [openmobilemenu, setOpenMobileMenu] = useState(false);
  const [isAuth, setIsAuth] = useState(false);
+ let {handleModal}  = useContext(ModalContext);
 
  const handleMobileMenu = () => {
   setOpenMobileMenu(!openmobilemenu);
  };
+
  const handleloginOrSignClick = () => {
-  if (openmobilemenu) {
-   setOpenMobileMenu();
-   setIsAuth(true);
-  }
-  setIsAuth(true);
+ handleModal(<Auth></Auth>)
  };
+
  return (
   <nav className="bg-gray-100 font-rubik font-semibold py-3 shadow-md border-b-2">
    <div className="max-w-8xl mx-auto px-4">

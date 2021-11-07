@@ -6,10 +6,12 @@ import Button from "Components/Button/Button";
 import SingleSelect from "Components/CustomSelect/SingleSelect";
 import GroupSelect from "Components/CustomSelect/GroupSelect";
 import BusOptions from "Components/BusOptions/BusOptions";
+import { ModalProvider } from "Context/context";
 
 export default function SearchBus() {
  return (
   <>
+  <ModalProvider>
  <NavBar disabled></NavBar>
  
    <div className="bg-blue-600 md:pt-1 md:pb-2 border-b-2 px-4 flex flex-col items-center md:flex-row md:justify-evenly md:align-baseline">
@@ -72,6 +74,7 @@ export default function SearchBus() {
    <div>
     <BusOptions></BusOptions>
    </div>
+     </ModalProvider>
   </>
  );
 }
