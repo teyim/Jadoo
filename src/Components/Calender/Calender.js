@@ -13,6 +13,7 @@ export default function Calender() {
       <div className="flex items-center max-w-2xl mx-auto justify-center space-x-4">
         <div>
           <DatePicker
+            className="py-3 "
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             minDate={new Date()}
