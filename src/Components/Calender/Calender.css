@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .react-datepicker__input-container input {
-  @apply block w-full  md:text-sm bg-white border border-gray-300 rounded  shadow-md py-4 px-2;
+  @apply block w-full md:text-sm bg-white border border-gray-300 rounded px-2;
 }
 
 .react-datepicker__tab-loop {
