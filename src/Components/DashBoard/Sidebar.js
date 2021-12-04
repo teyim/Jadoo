@@ -4,7 +4,7 @@ import { AiFillHome } from "react-icons/ai"
 import { FaUserCircle } from "react-icons/fa"
 import { RiRoadMapFill, RiLogoutCircleRFill } from "react-icons/ri"
 
-function Sidebar({ sidebarOpen, setSidebarOpen }) {
+function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
 
     const location = useLocation();
     const { pathname } = location;
@@ -31,23 +31,25 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
     const togglePages = (pageName) => {
         //refactor this code
-        if (pageName === 'dashboard') {
+        if (pageName === 'dashboard'&&showHome!==true) {
             setshowTripsPage(false)
             setshowprofilePage(false)
             setShowHome(!showHome)
+            toggleTabs(pageName);
         }
-        if (pageName === 'profilePage') {
+        if (pageName === 'profilePage' && showprofilePage!==true) {
             setshowTripsPage(false)
             setShowHome(false)
             setshowprofilePage(!showprofilePage)
-            
+            toggleTabs(pageName);
         }
-        if (pageName === 'tripsPage' ) {
+        if (pageName === 'tripsPage' && showTripsPage!==true) {
             setShowHome(false)
             setshowprofilePage(false)
             setshowTripsPage(!showTripsPage)
-
+            toggleTabs(pageName);
         }
+        
     }
 
     return (
