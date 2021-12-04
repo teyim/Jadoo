@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Table() {
+function Table({tableHeading}) {
     return (
         <div className="col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-gray-200 overflow-x-scroll">
-            <header className="px-5 py-4 border-b border-gray-100">
-                <h2 className="font-semibold text-gray-800">Recent Bookings</h2>
-            </header>
+            {tableHeading&&<header className="px-5 py-4 border-b border-gray-100">
+                <h2 className="font-semibold text-gray-800">{tableHeading}</h2>
+            </header>}
             <div className="p-3">
 
                 {/* Table */}
