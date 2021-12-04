@@ -25,7 +25,7 @@ export default function Dashboard() {
 
     return (
         <div>
-            <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+            <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto font-rubik">
 
                 {/* Welcome banner */}
                 <WelcomeBanner />
@@ -37,7 +37,7 @@ export default function Dashboard() {
                     ))}
                 </div>
                  <div className='my-8'>
-                     <Table></Table>
+                     <Table tableHeading='Recent Bookings'></Table>
                  </div>
             </div>
         </div>
