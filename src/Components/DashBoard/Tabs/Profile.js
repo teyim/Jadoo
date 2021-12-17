@@ -17,8 +17,8 @@ function Profile() {
 
     return (
         <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-            <div className=" mx-auto w-11/12 bg-white shadow-sm rounded-sm border border-gray-200 font-rubik">
-                <div className="px-5 py-5">
+            <div className=" mx-auto w-11/12 bg-white shadow-sm rounded-sm border border-gray-200 font-rubik ">
+                <div className="px-5 py-5 ">
                     <div className='md:flex justify-between'>
                         <div>
                             <h2 className="text-3xl font-semibold text-gray-700 mb-1 uppercase">PROFILE</h2>
@@ -28,7 +28,7 @@ function Profile() {
                             <Button
                                 customStyle={
                                     " " +
-                                    "border border-gray-400 text-gray-600 font-semibold py-2 px-4"
+                                    "border border-gray-400 text-gray-600 font-semibold py-2 px-4 my-2 md:my-0"
                                 }>
                                 Edit
                             </Button>
@@ -36,7 +36,7 @@ function Profile() {
                     </div>
                     {
                         Object.keys(profileOptions[0]).map((keyName, i) => (
-                            <div className='my-3 border-b p-2 flex' key={i}>
+                            <div className='my-3 border-b p-2 md:flex' key={i}>
                                 <h2 className='text-gray-600 w-2/5'>{keyName}</h2>
                                 {profileOptions[0][keyName] === '' ? 
                                 (<h2 className='text-md font-semibold text-blue-600 w-2/5'>+ Add</h2>) : 
@@ -57,7 +57,7 @@ function Profile() {
                             <Button
                                 customStyle={
                                     " " +
-                                    "border border-gray-400 text-gray-600 font-semibold py-2 px-4"
+                                    "border border-gray-400 text-gray-600 font-semibold py-2 px-4 my-2 md:my-0"
                                 }>
                                 Edit
                             </Button>
@@ -65,7 +65,7 @@ function Profile() {
                     </div>
                     {
                         Object.keys(profileOptions[1]).map((keyName, i) => (
-                            <div className='my-3 border-b p-2 flex' key={i}>
+                            <div className='my-3 border-b p-2 md:flex' key={i}>
                                 <h2 className='text-gray-600 w-2/5'>{keyName}</h2>
                                 {profileOptions[1][keyName] === '' ?
                                     (<h2 className='text-md font-semibold text-blue-600 w-2/5'>+ Add</h2>) :
