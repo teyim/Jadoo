@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import NavBar from 'Components/Layout/NavBar/NavBar'
 import { ArrowRightIcon } from "@heroicons/react/outline";
 import { FaCrown } from "react-icons/fa"
 import Button from "Components/Button/Button";
-import { useHistory } from "react-router";
+import { useHistory,useLocation } from "react-router";
 import SingleSelect from 'Components/CustomSelect/SingleSelect';
 import GroupSelect from 'Components/CustomSelect/GroupSelect';
 import Input from "Components/Input/Input"
@@ -12,6 +12,7 @@ import PhoneInput from 'react-phone-number-input/input'
 import Footer from 'Components/Layout/Footer/Footer';
 import { ModalProvider } from 'Context/context';
 
+
 export default function ReviewBooking() {
     const [value, setValue] = useState()
     const genders = [
@@ -19,6 +20,11 @@ export default function ReviewBooking() {
         { value: "female", label: "Female" },
     ]
     const history = useHistory();
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
     return (
         <>
         <ModalProvider>

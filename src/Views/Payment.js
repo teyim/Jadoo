@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import NavBar from 'Components/Layout/NavBar/NavBar'
 import Button from "Components/Button/Button";
-import { useHistory } from "react-router";
+import { useHistory, useLocation  } from "react-router";
 import SingleSelect from 'Components/CustomSelect/SingleSelect';
 import Footer from 'Components/Layout/Footer/Footer';
 import { ModalProvider } from 'Context/context';
+
 
 
 
@@ -21,6 +22,11 @@ const Payment = () => {
     const handleChosenOption=(value)=>{
         setValue(value)
     }
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
   
     return (
         <>

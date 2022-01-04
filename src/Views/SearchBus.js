@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useLayoutEffect}from "react";
 import NavBar from "Components/Layout/NavBar/NavBar";
 import { SwitchHorizontalIcon } from "@heroicons/react/outline";
 import Calender from "Components/Calender/Calender";
@@ -7,8 +7,14 @@ import SingleSelect from "Components/CustomSelect/SingleSelect";
 import GroupSelect from "Components/CustomSelect/GroupSelect";
 import BusOptions from "Components/BusOptions/BusOptions";
 import { ModalProvider } from "Context/context";
+import {useLocation} from 'react-router'
 
 export default function SearchBus() {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
  return (
   <>
   <ModalProvider>
@@ -38,7 +44,7 @@ export default function SearchBus() {
      <h1 className="text-2xl text-center text-white md:text-left font-semibold">
       Select Date
      </h1>
-     <Calender></Calender>
+     <Calender padding='py-3'></Calender>
     </div>
     <div className="md:mt-6">
      <Button
