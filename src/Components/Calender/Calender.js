@@ -9,9 +9,9 @@ export default function Calender({padding}) {
   );
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-200 rounded-md">
           <DatePicker
-            className={`${padding} w-full`}
+            className={`${padding} w-full rounded-md`}
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             minDate={new Date()}
