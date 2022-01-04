@@ -4,6 +4,8 @@ import Calender from "Components/Calender/Calender";
 import Button from "Components/Button/Button";
 import { useHistory } from "react-router";
 import SingleSelect from "Components/CustomSelect/SingleSelect";
+import blob from "../../../Assets/images/blob.svg"
+import { handleRegister} from '../../../Services/authServices'
 
 export default function Header() {
   const history =useHistory();
@@ -23,9 +25,8 @@ export default function Header() {
   ];
 
   return (
-    <div
-      className=" max-w-8xl py-4
-    text-gray-700 font-rubik  bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 flex flex-col items-center overflow-hidden">
+    <div className=" relative z-10 max-w-8xl py-4 text-gray-700 font-rubik  bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 overflow-hidden">
+      <div className="z-10 w-full  flex flex-col items-center relative">
       <h1 className="mt-3 pt-4 font-semibold text-4xl text-center text-white ">
         Bus Ticket booking made Easy
       </h1>
@@ -56,7 +57,7 @@ export default function Header() {
           <h1 className="text-2xl text-center md:text-left font-semibold">
             Select Date
           </h1>
-          <Calender></Calender>
+          <Calender padding='py-3'></Calender>
         </div>
       </div>
       <div className="hidden md:flex items-center my-2">
@@ -77,7 +78,7 @@ export default function Header() {
       </div>
       <div>
         <Button
-          click={()=>history.push('/searchbus')}      
+          click={()=>handleRegister()}      
           customStyle={
             " " +
             "bg-orange text-white font-semibold hover:bg-orangeDark my-3 shadow-md py-3 px-6"
@@ -85,6 +86,8 @@ export default function Header() {
           Search Bus
         </Button>
       </div>
+      </div>
+     <img src={blob} alt='blob' className="w-50 h-50 top-10 right-10 absolute opacity-20"></img>
     </div>
   );
 }
