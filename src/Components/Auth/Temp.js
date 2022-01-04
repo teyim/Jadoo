@@ -35,7 +35,7 @@ const emailVerificationSuccesful = (
 
 const Temp = () => {
     return (
-        [verifyEmail]
+        {verifyEmail}
     )
 }
 
