@@ -1,7 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore} from '@reduxjs/toolkit';
+import { userReducer} from '../Features/userAuth'
 
 export const store = configureStore({
   reducer: {
-    counter: {user:'teyim'},
+    user: userReducer,
   },
+  middleware:(getDefaultMiddleware)=>getDefaultMiddleware({
+    serializableCheck:false
+  })
 });
