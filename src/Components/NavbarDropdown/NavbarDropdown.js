@@ -6,9 +6,17 @@ import {
   UserCircleIcon,
   LogoutIcon,
 } from "@heroicons/react/outline";
+import { useSelector,useDispatch } from "react-redux";
+import { logOut } from "Features/userAuth";
 
 export default function MenuDropdown(props) {
+  const dispatch = useDispatch()
+  const {user}= useSelector(state => state.user)
   const { customStyle } = props;
+
+  const handlelogOut=()=>{
+ dispatch(logOut())
+  }
   return (
     <div className={customStyle + " my-auto text-right font-rubik z-50 "}>
       <Menu as="div" className="relative inline-block text-left">
@@ -62,7 +70,7 @@ export default function MenuDropdown(props) {
                   <button
                     className={`${
                       active ? "text-blue-700" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-md`}>
+                    } group flex rounded-md items-center w-full px-2 py-2 text-md`} onClick={handlelogOut}>
                     {active ? (
                       <LogoutIcon
                         className="w-6 h-6 mr-2  text-blue-600"
