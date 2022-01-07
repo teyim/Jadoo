@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { ModalContext } from "../../../Context/context";
 import Auth from "Components/Auth/Auth";
 import Signup from "Components/Auth/Signup";
+import { useSelector } from "react-redux";
 
 
 export default function NavBar({disabled}) {
  const [openmobilemenu, setOpenMobileMenu] = useState(false);
- const [isAuth, setIsAuth] = useState(false);
+const { user} = useSelector(state => state.user)
+
  let {handleModal}  = useContext(ModalContext);
 
  const handleMobileMenu = () => {
@@ -43,7 +45,7 @@ export default function NavBar({disabled}) {
                          </Link>
                      </div>):null
                  }
-     {isAuth ? (
+     {user ? (
       <MenuDropdown customStyle=" hidden md:flex"></MenuDropdown>
      ) : (
       <div className="hidden md:flex items-center space-x-1 px-3">
@@ -83,12 +85,9 @@ export default function NavBar({disabled}) {
      </Link>
      <Link to="/Jadoo" class=" py-3 text-sm hover:bg-blue-400 border-b-2">
       Testimonials
-     </Link>
-     <Link to="/Jadoo" class=" py-3 text-sm hover:bg-blue-400 border-b-2">
-      Agencies
      </Link></>):null
      }  
-     {isAuth ? (
+     {user ? (
       <div className="font-light text-blue-700 flex flex-col">
        <a
         href="/"
