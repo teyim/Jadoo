@@ -8,7 +8,7 @@ import { doc, setDoc, collection, addDoc, getDoc } from 'firebase/firestore'
 export const signUp = createAsyncThunk('user/signUp', async (data, { dispatch, rejectWithValue }) => {
     try {
         //create user
-        const { email, password } = data
+        const { email, password, phone, firstName, lastName} = data
         await createUserWithEmailAndPassword(auth, email, password);
 
         //add user info to store 
@@ -23,7 +23,10 @@ export const signUp = createAsyncThunk('user/signUp', async (data, { dispatch, r
             phoneNumber: auth.currentUser.phoneNumber,
         })
         //return firebase data
-        return getUserData()
+        const userData = await getDoc(doc(db, 'users', uid))
+        if (userData.exists()) {
+            return userData.data()
+        }
     } catch (error) {
         return rejectWithValue(error)
     }
@@ -40,7 +43,11 @@ export const logIn = createAsyncThunk('user/logIn', async (data, { dispatch, rej
         dispatch(SET_USER(auth.currentUser.toJSON()))
 
         //add user to firebase collection
-        return getUserData()
+        const uid = auth.currentUser.uid
+        const userData = await getDoc(doc(db, 'users', uid))
+        if (userData.exists()) {
+            return userData.data()
+        }
     } catch (error) {
         return rejectWithValue(error)
     }
@@ -56,13 +63,19 @@ export const logOut = createAsyncThunk('user/logOut', async (data, {dispatch, re
     }
 })
 
-const getUserData = async () => {
-    const uid = auth.currentUser.uid
-    const userData = await getDoc(doc(db, 'users', uid))
-    if (userData.exists()) {
-        return userData.data()
+export const initState = createAsyncThunk('user/initState',async(data,{dispatch,rejectWithValue})=>{
+    try {
+        dispatch(SET_USER(auth.currentUser.toJSON()))
+        const uid = auth.currentUser.uid
+        const userData = await getDoc(doc(db, 'users', uid))
+        if (userData.exists()) {
+            return userData.data()
+        }
+    } catch (error) {
+        return rejectWithValue(error)
     }
-}
+})
+
 
 export const userAuthSlice = createSlice({
 
@@ -129,6 +142,19 @@ export const userAuthSlice = createSlice({
             state.user = null
         },
         [logOut.rejected]: (state, { payload }) => {
+            state.loading = false
+            state.errorMessage = payload?.code
+        },
+        //login action types
+        [initState.pending]: (state) => {
+            state.loading = true
+        },
+        [initState.fulfilled]: (state,{payload}) => {
+            state.loading = false
+            state.errorMessage = null
+            state.userData = payload
+        },
+        [initState.rejected]: (state, { payload }) => {
             state.loading = false
             state.errorMessage = payload?.code
         },
