@@ -9,7 +9,7 @@ const Modal=()=>{
         <>
                     <div
                 className="justify-center font-rubik items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none shadow-md bg-blue-400" >
-                        <div className="relative w-11/12 md:w-1/3 my-6 mx-auto max-w-3xl bg-gray-600 ">
+                        <div className="relative w-11/12 md:w-2/5 my-6 mx-auto max-w-3xl bg-gray-600 ">
                             {/*content*/}
                             <div className=" rounded-sm shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 {/*header*/}
