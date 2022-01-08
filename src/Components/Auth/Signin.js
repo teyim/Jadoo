@@ -12,16 +12,27 @@ import { auth } from 'config/firebaseConfig';
 
 function Signin ({ toggleAuthScreen}) {
     let { handleModal } = useContext(ModalContext)
-    const {loading,errorMessage,userData} = useSelector(state => state.user)
+    const { loading, errorMessage} = useSelector(state => state.user)
+
+
     const dispatch = useDispatch()
     const schema=yup.object().shape({
         email:yup.string().email().required(),
-        password:yup.string().min(6).required()
+        password: yup.string()
+            .required('No password provided.')
+            .min(8, 'Password is too short - should be 8 chars minimum.')
+            .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
     })
 
-    const handleSignIn=(value)=>{
-    const action= dispatch(logIn(value))  
-    console.log(action)  
+    const handleSignIn = async (value) => {
+
+        dispatch(logIn(value)).then((data) => {
+            if (data?.meta?.requestStatus === "fulfilled")
+            {
+           handleModal();
+            }
+           
+        })
     }
   
     const formik = useFormik({
@@ -45,7 +56,7 @@ function Signin ({ toggleAuthScreen}) {
     
     return (
         <>
-            <div className='w-4/5 mx-auto text-gray-700'>
+            <div className='w-4/5 mx-auto text-gray-700 font-rubik'>
                 <h1 class="font-medium text-2xl text-center">Login</h1>
                 <form action="" class="mt-2" onSubmit={formik.handleSubmit}>
                     <div class="my-3 text-sm">
@@ -57,13 +68,7 @@ function Signin ({ toggleAuthScreen}) {
                         <label for="password" class="block ">Password</label>
                         <input type="password" id="password" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-200 w-full" placeholder="Password" value={formik.values.password} onChange={(e) => setInputValue('password', e.target.value)} />
                         <p className='text-red-500 text-sm'>{formik.errors.password}</p>
-                        <div className="flex justify-between my-4">
-                            <div className='flex items-center'>
-                            <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"/>
-                            <label for="remember_me" class ="ml-2 block text-sm text-gray-900">
-                            Remember me
-                            </label>
-                            </div>
+                        <div className=" my-4">
                             <a href="#">Forget Password?</a>
                         </div>
                         
@@ -79,8 +84,9 @@ function Signin ({ toggleAuthScreen}) {
                     </button>
                 </div>
                 <p className='text-red-500 text-sm text-center'>{errorMessage}</p>
-                <p class="my-4 text-md text-center font-light text-gray-500"> Don't have an account? <span disabled={!formik.isValid || loading} class="text-blue-500 cursor-pointer " onClick={()=>toggleAuthScreen()}> Create One </span></p>
-               
+                <div className='flex justify-center my-2'>
+                    <button class="mx-auto text-md text-center font-light text-gray-500" disabled={loading} onClick={() => toggleAuthScreen()}> Don't have an account? <span class="text-blue-500" > Create One </span></button>
+                </div>
             </div>
         </>
     )
