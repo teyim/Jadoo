@@ -79,7 +79,7 @@ function Signin ({ toggleAuthScreen}) {
                         </button>
                 </form>
                 <div className='my-3'>
-                    <button disabled={!formik.isValid || loading}class="flex text-center  bg-blue-500 hover:bg-blue-600 text-white w-full p-2 duration-300 rounded-sm shadow-md">
+                    <button disabled={loading} class="flex text-center  bg-blue-500 hover:bg-blue-600 text-white w-full p-2 duration-300 rounded-sm shadow-md">
                         <FcGoogle className='w-7 h-7 p-1 bg-white my-auto'></FcGoogle><span className='mx-auto my-auto'>Continue with Google</span>
                     </button>
                 </div>
