@@ -7,11 +7,14 @@ import { useFormik } from 'formik';
 import * as yup from 'yup'
 import { signUp } from 'Features/userAuth';
 import { ModalContext } from '../../Context/context'
+import { ImSpinner2 } from 'react-icons/im'
+import { useHistory } from "react-router";
 
 
 const Signup = ({ toggleAuthScreen}) => {
+  const {push} = useHistory()
   let { handleModal } = useContext(ModalContext)
-  const {loading} = useSelector(state => state.user)
+  const { loading, errorMessage } = useSelector(state => state.user)
   const [value, setValue] = useState()
 
   const dispatch = useDispatch()
@@ -33,16 +36,17 @@ const Signup = ({ toggleAuthScreen}) => {
     dispatch(signUp(value)).then((data) => {
       if (data?.meta?.requestStatus === "fulfilled") {
         handleModal();
+        push('/verifyemail')
       }
-
     })
+   
   }
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName:'',
-      phone:null,
+      phone:'',
       email:'',
       password: '',
       passwordConfirmation:''
@@ -110,15 +114,18 @@ const Signup = ({ toggleAuthScreen}) => {
               </div>
             </div>
 
-            <button type='submit' class="block text-center text-white bg-gray-800 p-2 duration-300 rounded-sm hover:bg-black w-full">Create Account</button>
+            <button type='submit' class="flex justify-center text-center text-white bg-gray-800 p-2 duration-300 rounded-sm hover:bg-black w-full" disabled={!formik.isValid || loading}>
+              {loading ? <ImSpinner2 className='w-5 h-6 animate-spin my-auto text-white '></ImSpinner2> : 'Create account'}
+            </button>
           </form>
           <div className='my-3'>
-            <button class="flex text-center  bg-blue-500 hover:bg-blue-600 text-white w-full p-2 duration-300 rounded-sm shadow-md">
+            <button disabled={loading} class="flex text-center  bg-blue-500 hover:bg-blue-600 text-white w-full p-2 duration-300 rounded-sm shadow-md">
               <FcGoogle className='w-7 h-7 p-1 bg-white my-auto'></FcGoogle><span className='mx-auto my-auto'>Continue with Google</span>
             </button>
           </div>
+          <p className='text-red-500 text-sm text-center'>{errorMessage}</p>
           <div className='flex justify-center my-2'>
-            <button class="mx-auto text-md text-center font-light text-gray-500" disabled={loading} onClick={() => toggleAuthScreen()}> Already have an account? <span class="text-blue-500" > Login </span></button>
+            <button disabled={loading} class="mx-auto text-md text-center font-light text-gray-500" onClick={() => toggleAuthScreen()}> Already have an account? <span class="text-blue-500" > Login </span></button>
           </div>
         </div>
         </>
