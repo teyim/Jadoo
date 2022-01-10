@@ -14,6 +14,7 @@ import * as serviceWorker from "./serviceWorker";
 import "./Font/GDBoingBold.ttf";
 import ProctectedRoute from "Components/ProctectedRoute";
 import UserDashboard from "Views/UserDashboard";
+import VerifyEmail from "Components/Auth/VerifyEmail";
 
 
 const Routing = () => {
@@ -24,7 +25,8 @@ const Routing = () => {
     <Route path="/searchbus" component={SearchBus}></Route>
     <Route path="/review" component={ReviewBooking}></Route>
     <Route path="/payment" component={Payment}></Route>
-    <Route path="/verifyemail" component={EmailVerifySuccess}></Route>
+    <Route path="/verifyemail" component={VerifyEmail}></Route>
+    <Route path="/verifyemailsuccess" component={EmailVerifySuccess}></Route>
     <Route  path="/signin" component={Auth}></Route>
     <ProctectedRoute exact path='/dashboard' component={UserDashboard}/>
    </Switch>
