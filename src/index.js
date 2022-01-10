@@ -5,20 +5,28 @@ import App from "./App";
 import SearchBus from "Views/SearchBus";
 import ReviewBooking from "Views/ReviewBooking";
 import Payment from "Views/Payment";
+import EmailVerifySuccess from "Components/Auth/EmailVerifySuccess";
+import Auth from "Views/Auth"
 import { store } from "./Store/store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import "./Font/GDBoingBold.ttf";
+import ProctectedRoute from "Components/ProctectedRoute";
+import UserDashboard from "Views/UserDashboard";
+
 
 const Routing = () => {
  return (
   <Router>
    <Switch>
-    <Route exact path="/Jadoo" component={App}></Route>
+    <Route exact path="/" component={App}></Route>
     <Route path="/searchbus" component={SearchBus}></Route>
     <Route path="/review" component={ReviewBooking}></Route>
     <Route path="/payment" component={Payment}></Route>
+    <Route path="/verifyemail" component={EmailVerifySuccess}></Route>
+    <Route  path="/signin" component={Auth}></Route>
+    <ProctectedRoute exact path='/dashboard' component={UserDashboard}/>
    </Switch>
   </Router>
  );

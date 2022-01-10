@@ -8,13 +8,16 @@ import {
 } from "@heroicons/react/outline";
 import { useSelector,useDispatch } from "react-redux";
 import { logOut } from "Features/userAuth";
+import { useHistory } from "react-router-dom";
 
 export default function MenuDropdown(props) {
   const dispatch = useDispatch()
+  const history = useHistory();
   const {user}= useSelector(state => state.user)
   const { customStyle } = props;
 
   const handlelogOut=()=>{
+   
  dispatch(logOut())
   }
   return (
@@ -49,12 +52,12 @@ export default function MenuDropdown(props) {
                   <button
                     className={`${
                       active ? "text-blue-700" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-md`}>
+                      } group flex rounded-md items-center w-full px-2 py-2 text-md`} onClick={() => history.push('/dashboard')} >
                     {active ? (
                       <UserCircleIcon
                         className="w-6 h-6 mr-2  text-blue-600"
-                        aria-hidden="true"
-                      />
+                        aria-hidden="true" 
+                        />
                     ) : (
                       <UserCircleIcon
                         className="w-6 h-6 mr-2 text-gray-600"
