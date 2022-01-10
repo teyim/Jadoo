@@ -11,7 +11,6 @@ import { ModalContext} from '../../Context/context'
 import { auth } from 'config/firebaseConfig';
 
 function Signin ({ toggleAuthScreen}) {
-    let { handleModal } = useContext(ModalContext)
     const { loading, errorMessage} = useSelector(state => state.user)
 
 
@@ -29,7 +28,7 @@ function Signin ({ toggleAuthScreen}) {
         dispatch(logIn(value)).then((data) => {
             if (data?.meta?.requestStatus === "fulfilled")
             {
-           handleModal();
+                console.log('hello')
             }
            
         })
@@ -55,8 +54,8 @@ function Signin ({ toggleAuthScreen}) {
     
     
     return (
-        <>
-            <div className='w-4/5 mx-auto text-gray-700 font-rubik'>
+        <div className='my-auto w-11/12 md:w-4/12 mx-auto bg-white'>
+            <div className=' p-5 border rounded-sm shadow-md  text-gray-700 font-rubik'>
                 <h1 class="font-medium text-2xl text-center">Login</h1>
                 <form action="" class="mt-2" onSubmit={formik.handleSubmit}>
                     <div class="my-3 text-sm">
@@ -88,7 +87,7 @@ function Signin ({ toggleAuthScreen}) {
                     <button class="mx-auto text-md text-center font-light text-gray-500" disabled={loading} onClick={() => toggleAuthScreen()}> Don't have an account? <span class="text-blue-500" > Create One </span></button>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

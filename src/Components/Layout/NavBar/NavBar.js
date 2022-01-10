@@ -1,25 +1,20 @@
 import React, { useState,useContext } from "react";
 import Button from "Components/Button/Button";
 import MenuDropdown from "Components/NavbarDropdown/NavbarDropdown";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ModalContext } from "../../../Context/context";
-import Auth from "Components/Auth/Auth";
+import Auth from "Views/Auth";
 import Signup from "Components/Auth/Signup";
 import { useSelector } from "react-redux";
 
 
 export default function NavBar({disabled}) {
+const history = useHistory();
  const [openmobilemenu, setOpenMobileMenu] = useState(false);
 const { user} = useSelector(state => state.user)
 
- let {handleModal}  = useContext(ModalContext);
-
  const handleMobileMenu = () => {
   setOpenMobileMenu(!openmobilemenu);
- };
-
- const handleloginOrSignClick = () => {
- handleModal(<Auth></Auth>)
  };
 
  return (
@@ -28,7 +23,7 @@ const { user} = useSelector(state => state.user)
     <div className="flex justify-between">
      <div className="">
       <Link
-       to="/Jadoo"
+       to="/"
        className="flex items-center py-2 px-2 text-blue-700 font-boing text-4xl">
        Jadoo.
       </Link>
@@ -50,7 +45,7 @@ const { user} = useSelector(state => state.user)
      ) : (
       <div className="hidden md:flex items-center space-x-1 px-3">
        <Button
-        click={handleloginOrSignClick}
+         click={() => history.push('/signin')}
         customStyle={" " + "bg-blue-700 hover:bg-blue-800"}>
         Login or Signup
        </Button>
@@ -80,10 +75,10 @@ const { user} = useSelector(state => state.user)
    {openmobilemenu ? (
     <div className=" md:hidden text-center text-gray-700 flex flex-col content-evenly">
     {!disabled?
-    (<><Link to="/Jadoo" class=" py-3 text-sm hover:bg-blue-400 border-2">
+    (<><Link to="/" class=" py-3 text-sm hover:bg-blue-400 border-2">
       About
      </Link>
-     <Link to="/Jadoo" class=" py-3 text-sm hover:bg-blue-400 border-b-2">
+     <Link to="/" class=" py-3 text-sm hover:bg-blue-400 border-b-2">
       Testimonials
      </Link></>):null
      }  
@@ -100,8 +95,9 @@ const { user} = useSelector(state => state.user)
       </div>
      ) : (
       <Button
+        click={() => history.push('/signin')}
        customStyle={" " + "bg-blue-700 hover:bg-blue-800 mt-3 mx-auto"}
-       click={handleloginOrSignClick}>
+       >
        Login or SignUp
       </Button>
      )}

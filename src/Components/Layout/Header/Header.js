@@ -78,7 +78,7 @@ export default function Header() {
       </div>
       <div>
         <Button
-          click={()=>handleRegister()}      
+            click={() => history.push('/searchbus')}      
           customStyle={
             " " +
             "bg-orange text-white font-semibold hover:bg-orangeDark my-3 shadow-md py-3 px-6"

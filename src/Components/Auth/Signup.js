@@ -13,7 +13,6 @@ import { useHistory } from "react-router";
 
 const Signup = ({ toggleAuthScreen}) => {
   const {push} = useHistory()
-  let { handleModal } = useContext(ModalContext)
   const { loading, errorMessage } = useSelector(state => state.user)
   const [value, setValue] = useState()
 
@@ -35,7 +34,6 @@ const Signup = ({ toggleAuthScreen}) => {
 
     dispatch(signUp(value)).then((data) => {
       if (data?.meta?.requestStatus === "fulfilled") {
-        handleModal();
         push('/verifyemail')
       }
     })
@@ -65,8 +63,8 @@ const Signup = ({ toggleAuthScreen}) => {
 
 
     return (
-        <>
-        <div className='w-11/12 md:w-4/5 mx-auto text-gray-700 font-rubik'>
+      <div className='my-auto w-11/12 md:w-5/12 mx-auto bg-white '>
+        <div className=' p-5 border rounded-sm shadow-md  text-gray-700 font-rubik'>
           <h1 class="font-medium text-2xl text-center">SignUp</h1>
           <form action="" class="mt-2" onSubmit={formik.handleSubmit}>
             
@@ -128,7 +126,7 @@ const Signup = ({ toggleAuthScreen}) => {
             <button disabled={loading} class="mx-auto text-md text-center font-light text-gray-500" onClick={() => toggleAuthScreen()}> Already have an account? <span class="text-blue-500" > Login </span></button>
           </div>
         </div>
-        </>
+        </div>
     )
 }
 
