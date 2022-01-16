@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { AiFillHome } from "react-icons/ai"
 import { FaUserCircle } from "react-icons/fa"
 import { RiRoadMapFill, RiLogoutCircleRFill } from "react-icons/ri"
+import { logOut } from 'Features/userAuth';
+import { useDispatch } from 'react-redux';
 
 function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
 
-    const location = useLocation();
-    const { pathname } = location;
-    const page = pathname.split('')[1];
+    const dispatch=useDispatch();
+    const {push}=useHistory();
 
     const trigger = useRef(null);
     const sidebar = useRef(null);
@@ -17,6 +18,14 @@ function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
     const [showHome, setShowHome] = useState(true)
     const [showprofilePage, setshowprofilePage] = useState(false)
     const [showTripsPage, setshowTripsPage] = useState(false)
+
+    const handleLogOut=()=>{
+        dispatch(logOut()).then((data) => {
+            if (data?.meta?.requestStatus === "fulfilled") {
+                push('/')
+            }
+        })
+    }
 
     // close on click outside
     useEffect(() => {
@@ -130,7 +139,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
                         </li>
                         <li className={`px-3 py-8 rounded-sm mb-0.5 last:mb-0 cursor-pointer`}>
                             <div className={`block text-gray-200 hover:text-white transition duration-150`}>
-                                <div className="flex flex-grow">
+                                <div className="flex flex-grow" onClick={handleLogOut}>
                                     <RiLogoutCircleRFill className={`flex-shrink-0 w-6 h-6 mr-2  text-gray-400`} />
                                     <span className="text-sm font-medium">Logout</span>
                                 </div>
