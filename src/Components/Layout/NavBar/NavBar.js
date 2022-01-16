@@ -5,18 +5,23 @@ import { Link, useHistory } from "react-router-dom";
 import { ModalContext } from "../../../Context/context";
 import Auth from "Views/Auth";
 import Signup from "Components/Auth/Signup";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { logOut } from "Features/userAuth";
 
 
 export default function NavBar({disabled}) {
 const history = useHistory();
+const dispatch = useDispatch()
  const [openmobilemenu, setOpenMobileMenu] = useState(false);
 const { user} = useSelector(state => state.user)
 
  const handleMobileMenu = () => {
   setOpenMobileMenu(!openmobilemenu);
  };
+    const handlelogOut = () => {
 
+        dispatch(logOut())
+    }
  return (
   <nav className="bg-gray-100 font-rubik font-semibold py-3 shadow-md border-b-2">
    <div className="max-w-8xl mx-auto px-4">
@@ -84,14 +89,14 @@ const { user} = useSelector(state => state.user)
      }  
      {user ? (
       <div className="font-light text-blue-700 flex flex-col">
-       <a
-        href="/"
+       <Link
+        to="/dashboard"
         class=" py-3 text-sm hover:bg-blue-400 border-b-2 border-t-4 hover:text-white ">
         Account
-       </a>
-       <a href="/" class=" py-3 text-sm hover:bg-blue-400 hover:text-white ">
+       </Link>
+       <button class=" py-3 text-sm hover:bg-blue-400 hover:text-white " onClick={handlelogOut}>
         Logout
-       </a>
+       </button>
       </div>
      ) : (
       <Button
