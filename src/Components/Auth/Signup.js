@@ -5,14 +5,16 @@ import PhoneInput from 'react-phone-number-input/input'
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup'
-import { signUp } from 'Features/userAuth';
+import { logOut, signUp } from 'Features/userAuth';
 import { ModalContext } from '../../Context/context'
 import { ImSpinner2 } from 'react-icons/im'
 import { useHistory } from "react-router";
+import { auth } from 'config/firebaseConfig';
+import { sendEmailVerification } from 'firebase/auth';
 
 
 const Signup = ({ toggleAuthScreen}) => {
-  const {push} = useHistory()
+  const {replace ,push} = useHistory()
   const { loading, errorMessage } = useSelector(state => state.user)
   const [value, setValue] = useState()
 
@@ -20,21 +22,25 @@ const Signup = ({ toggleAuthScreen}) => {
   const schema = yup.object().shape({
     firstName:yup.string().required(),
     lastName: yup.string().required(),
-    phone:yup.string().min(13,'phone number not valid').required('phone number is required'),
+    phone:yup.string().min(13,'phone number not valid').required(),
     email: yup.string().email().required(),
     password: yup.string()
       .required('No password provided.')
       .min(6, 'Password is too short - should be 8 chars minimum.')
       .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
     passwordConfirmation: yup.string()
-      .oneOf([yup.ref('password'), null], 'Passwords must match')
+      .oneOf([yup.ref('password'), null], 'Passwords must match').required('Please confirm password')
   })
 
   const handleSignUp = async (value) => {
 
-    dispatch(signUp(value)).then((data) => {
+    dispatch(signUp(value)).then(async(data) => {
       if (data?.meta?.requestStatus === "fulfilled") {
-        push('/verifyemail')
+        sendEmailVerification(auth.currentUser).then(()=>{
+          replace('/verifyemail')
+        }).catch(error=>{
+        alert('Error sending email verification')
+        })
       }
     })
    
@@ -92,8 +98,7 @@ const Signup = ({ toggleAuthScreen}) => {
               <label for="email" class="block text-gray-700">Phone number</label>
               <div className='my-3'>
                 <PhoneInput maxLength={18} className='rounded-sm px-4 py-3 focus:outline-none bg-gray-200 w-full' country="CM" withCountryCallingCode international value={formik.values.phone} onChange={e => setInputValue("phone", e)} onBlur={formik.handleBlur("phone")} />
-                {formik.touched.phone && formik.errors.phone ? (
-                <p className='text-red-500 text-sm'>{formik.errors.phone}</p>):null}
+                <p className='text-red-500 text-sm'>{formik.errors.phone}</p>
                 </div>
             </div>
             </div>

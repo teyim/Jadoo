@@ -9,8 +9,9 @@ import * as yup from 'yup'
 import {logIn} from '../../Features/userAuth'
 import { ModalContext} from '../../Context/context'
 import { auth } from 'config/firebaseConfig';
-
+import { useHistory } from 'react-router-dom';
 function Signin ({ toggleAuthScreen}) {
+    const {replace}=useHistory()
     const { loading, errorMessage} = useSelector(state => state.user)
 
 
@@ -28,7 +29,7 @@ function Signin ({ toggleAuthScreen}) {
         dispatch(logIn(value)).then((data) => {
             if (data?.meta?.requestStatus === "fulfilled")
             {
-                console.log('hello')
+                replace('/')
             }
            
         })

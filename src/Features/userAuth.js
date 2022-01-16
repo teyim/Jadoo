@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { auth, db } from '../config/firebaseConfig'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth'
 import { doc, setDoc, collection, addDoc, getDoc } from 'firebase/firestore'
 
 
@@ -28,6 +28,7 @@ export const signUp = createAsyncThunk('user/signUp', async (data, { dispatch, r
             return userData.data()
         }
     } catch (error) {
+        console.log(error);
         return rejectWithValue(error)
     }
 
@@ -73,6 +74,7 @@ export const initState = createAsyncThunk('user/initState',async(data,{dispatch,
         }
     } catch (error) {
         return rejectWithValue(error)
+       
     }
 })
 
