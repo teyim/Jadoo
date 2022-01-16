@@ -1,11 +1,11 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
-import whiteManImage from "../../Assets/images/whiteman.jpeg";
 import {
   ChevronDownIcon,
   UserCircleIcon,
   LogoutIcon,
 } from "@heroicons/react/outline";
+import { CgUserlane} from 'react-icons/cg'
 import { useSelector,useDispatch } from "react-redux";
 import { logOut } from "Features/userAuth";
 import { useHistory } from "react-router-dom";
@@ -13,8 +13,9 @@ import { useHistory } from "react-router-dom";
 export default function MenuDropdown(props) {
   const dispatch = useDispatch()
   const history = useHistory();
-  const {user}= useSelector(state => state.user)
+  const {userData}= useSelector(state => state.user)
   const { customStyle } = props;
+  const userFullNames=`${userData?.firstName +" "+ userData?.lastName}`;
 
   const handlelogOut=()=>{
    
@@ -25,12 +26,8 @@ export default function MenuDropdown(props) {
       <Menu as="div" className="relative inline-block text-left">
         <div className="">
           <Menu.Button className="inline-flex justify-evenly  w-full px-4 py-2 text-sm font-medium text-gray-700 text-md rounded-md ">
-            <img
-              className="h-9 w-9 rounded-md mx-2 my-auto border-2 border-blue-700"
-              src={whiteManImage}
-              alt="white man"
-            />
-            <span className="my-auto">Hey! Teyim Asobo</span>
+            <CgUserlane className="w-5 h-5 mx-1 text-blue-700"/>
+            <span className="my-auto">Hey! {userFullNames?.length>15?userData?.firstName:userFullNames}</span>
             <ChevronDownIcon
               className="w-5 h-5 ml-2 -mr-1 my-auto text-violet-200 hover:text-violet-100"
               aria-hidden="true"
