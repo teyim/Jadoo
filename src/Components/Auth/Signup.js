@@ -121,11 +121,6 @@ const Signup = ({ toggleAuthScreen}) => {
               {loading ? <ImSpinner2 className='w-5 h-6 animate-spin my-auto text-white '></ImSpinner2> : 'Create account'}
             </button>
           </form>
-          <div className='my-3'>
-            <button disabled={loading} class="flex text-center  bg-blue-500 hover:bg-blue-600 text-white w-full p-2 duration-300 rounded-sm shadow-md">
-              <FcGoogle className='w-7 h-7 p-1 bg-white my-auto'></FcGoogle><span className='mx-auto my-auto'>Continue with Google</span>
-            </button>
-          </div>
           <p className='text-red-500 text-sm text-center'>{errorMessage}</p>
           <div className='flex justify-center my-2'>
             <button disabled={loading} class="mx-auto text-md text-center font-light text-gray-500" onClick={() => toggleAuthScreen()}> Already have an account? <span class="text-blue-500" > Login </span></button>
