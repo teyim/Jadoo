@@ -1,6 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 
 function WelcomeBanner() {
+    const { userData } = useSelector(state => state.user)
+    const userFullNames = `${userData?.firstName + " " + userData?.lastName}`;
     return (
         <div className="relative bg-indigo-200 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
 
@@ -48,7 +52,7 @@ function WelcomeBanner() {
 
             {/* Content */}
             <div className="relative">
-                <h1 className="text-2xl md:text-3xl text-gray-800 font-bold mb-1">Good afternoon, Teyim Asobo.👋</h1>
+                <h1 className="text-1xl md:text-2xl text-gray-700  mb-1">Greetings <span className='font-medium'>{userFullNames}</span>👋</h1>
                 <p>Here is how your Travel information is looking:</p>
             </div>
 
