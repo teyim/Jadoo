@@ -7,6 +7,7 @@ import Auth from "Views/Auth";
 import Signup from "Components/Auth/Signup";
 import { useSelector,useDispatch } from "react-redux";
 import { logOut } from "Features/userAuth";
+import { CgUserlane} from 'react-icons/cg'
 
 
 export default function NavBar({disabled}) {
@@ -26,10 +27,11 @@ const { user} = useSelector(state => state.user)
   <nav className="bg-gray-100 font-rubik font-semibold py-3 shadow-md border-b-2">
    <div className="max-w-8xl mx-auto px-4">
     <div className="flex justify-between">
-     <div className="">
+     <div className="flex justify-center">
+    <CgUserlane className="w-10 h-10 my-auto text-blue-700 " />
       <Link
        to="/"
-       className="flex items-center py-2 px-2 text-blue-700 font-boing text-4xl">
+       className="flex items-center py-2 px-2 text-blue-700 font-boing text-3xl">
        Jadoo.
       </Link>
      </div>
@@ -91,7 +93,7 @@ const { user} = useSelector(state => state.user)
       <div className="font-light text-blue-700 flex flex-col">
        <Link
         to="/dashboard"
-        class=" py-3 text-sm hover:bg-blue-400 border-b-2 border-t-4 hover:text-white ">
+        class=" py-3 text-sm font-semibold hover:bg-blue-500 border-b-2 border-t-4 hover:text-white ">
         Account
        </Link>
        <button class=" py-3 text-sm hover:bg-blue-400 hover:text-white " onClick={handlelogOut}>

@@ -1,10 +1,14 @@
 import React from 'react';
+import { HiOutlineHome} from 'react-icons/hi'
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 
-function Header({
-    sidebarOpen,
-    setSidebarOpen
-}) {
+
+function Header({sidebarOpen,setSidebarOpen}) {
+    const {userData} = useSelector(state => state.user)
+
+    const history =useHistory();
     return (
         <header className="sticky top-0 bg-white border-b border-gray-200 z-30">
             <div className="px-4 sm:px-6 lg:px-8">
@@ -27,7 +31,9 @@ function Header({
                                 <rect x="4" y="17" width="16" height="2" />
                             </svg>
                         </button>
-
+                        <button onClick={()=>history.replace('/')} className='flex text-lg font-medium'>
+                            <HiOutlineHome className='w-6 h-6 text-gray-700 my-auto mx-1'/>Home
+                        </button>
                     </div>
 
                     {/* Header: Right side */}
@@ -35,7 +41,7 @@ function Header({
 
                         {/*  Divider */}
                         <hr className="w-px h-6 bg-gray-200 mx-3" />
-                        <h2 className='font-rubik text-lg font-medium text-gray-700'>Teyim Asobo</h2>
+                        <h2 className='font-rubik text-lg font-medium text-gray-700'>{userData?.email}</h2>
 
                     </div>
 
