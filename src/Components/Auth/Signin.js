@@ -1,4 +1,4 @@
-import React, {useCallback,useState,useContext }from 'react'
+import React, {useCallback,useState,useContext,useEffect}from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { FcGoogle } from "react-icons/fc";
 import { ImSpinner2} from 'react-icons/im'
@@ -6,14 +6,14 @@ import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input/input'
 import { useFormik } from 'formik';
 import * as yup from 'yup'
-import {logIn} from '../../Features/userAuth'
+import {googlelogIn, logIn} from '../../Features/userAuth'
 import { ModalContext} from '../../Context/context'
 import { auth } from 'config/firebaseConfig';
 import { useHistory } from 'react-router-dom';
 function Signin ({ toggleAuthScreen}) {
-    const {replace}=useHistory()
-    const { loading, errorMessage} = useSelector(state => state.user)
 
+    const {replace}=useHistory()
+    const { loading, errorMessage, googleAuthloading} = useSelector(state => state.user)
 
     const dispatch = useDispatch()
     const schema=yup.object().shape({
@@ -33,6 +33,14 @@ function Signin ({ toggleAuthScreen}) {
             }
            
         })
+    }
+
+    const handleGoogleLogin=()=>{
+       dispatch(googlelogIn()).then((data)=>{
+           if (data?.meta?.requestStatus === "fulfilled") {
+               replace('/')
+           }
+       })
     }
   
     const formik = useFormik({
@@ -74,18 +82,18 @@ function Signin ({ toggleAuthScreen}) {
                         
                     </div>
 
-                    <button type='submit' class="flex justify-center text-center text-white bg-gray-800 p-2 duration-300 rounded-sm hover:bg-black w-full" disabled={!formik.isValid||loading}>
+                    <button type='submit' class="flex justify-center text-center text-white bg-gray-800 p-2 duration-300 rounded-sm hover:bg-black w-full" disabled={!formik.isValid || loading || googleAuthloading}>
                         {loading ? <ImSpinner2 className='w-5 h-6 animate-spin my-auto text-white '></ImSpinner2> : 'Login'}
                         </button>
                 </form>
                 <div className='my-3'>
-                    <button disabled={loading} class="flex text-center  bg-blue-500 hover:bg-blue-600 text-white w-full p-2 duration-300 rounded-sm shadow-md">
+                    <button disabled={loading || googleAuthloading} onClick={handleGoogleLogin} class="flex text-center  bg-blue-500 hover:bg-blue-600 text-white w-full p-2 duration-300 rounded-sm shadow-md">
                         <FcGoogle className='w-7 h-7 p-1 bg-white my-auto'></FcGoogle><span className='mx-auto my-auto'>Continue with Google</span>
                     </button>
                 </div>
                 <p className='text-red-500 text-sm text-center'>{errorMessage}</p>
                 <div className='flex justify-center my-2'>
-                    <button class="mx-auto text-md text-center font-light text-gray-500" disabled={loading} onClick={() => toggleAuthScreen()}> Don't have an account? <span class="text-blue-500" > Create One </span></button>
+                    <button class="mx-auto text-md text-center font-light text-gray-500" disabled={loading || googleAuthloading} onClick={() => toggleAuthScreen()}> Don't have an account? <span class="text-blue-500" > Create One </span></button>
                 </div>
             </div>
         </div>
