@@ -1,15 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { auth, db } from '../config/firebaseConfig'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, sendPasswordResetEmail, updateProfile, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { doc, setDoc, collection, addDoc, getDoc } from 'firebase/firestore'
 
-
+const provider = new GoogleAuthProvider()
+provider.setCustomParameters({
+    'login_hint': 'select email address'
+})
 //Thunks
 export const signUp = createAsyncThunk('user/signUp', async (data, { dispatch, rejectWithValue }) => {
     try {
         //create user
         const { email, password, phone, firstName, lastName} = data
-        await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(auth, email, password)
 
         //add user info to store 
         dispatch(SET_USER(auth.currentUser.toJSON()))
@@ -19,8 +22,9 @@ export const signUp = createAsyncThunk('user/signUp', async (data, { dispatch, r
         //create user document in db
         await setDoc(doc(db, 'users', uid), {
             email: auth.currentUser.email,
-            emailVerified: auth.currentUser.emailVerified,
-            phoneNumber: auth.currentUser.phoneNumber,
+            phoneNumber: phone,
+            firstName: firstName,
+            lastName: lastName
         })
         //return firebase data
         const userData = await getDoc(doc(db, 'users', uid))
@@ -49,6 +53,34 @@ export const logIn = createAsyncThunk('user/logIn', async (data, { dispatch, rej
         if (userData.exists()) {
             return userData.data()
         }
+    } catch (error) {
+        return rejectWithValue(error)
+    }
+})
+
+export const googlelogIn = createAsyncThunk('user/googlelogIn', async (data, { dispatch, rejectWithValue }) => {
+    try {
+        
+        let userfullName=[];
+        const data = await signInWithPopup(auth, provider)
+        //split diaplay name
+        userfullName = data?.user?.displayName.split(/(\s+)/);
+        //get user id
+        const uid = auth.currentUser.uid
+        //create user db record if it does not already exist
+        const userData = await getDoc(doc(db, 'users', uid))
+        if (!userData.exists()) {
+            await setDoc(doc(db, 'users', uid), {
+                email: auth.currentUser.email,
+                phoneNumber: '',
+                firstName: userfullName[0],
+                lastName: `${userfullName[1]+ userfullName[2]}`
+            })
+        }
+
+        dispatch(SET_USER(auth.currentUser.toJSON()))
+        return userData.data()
+       
     } catch (error) {
         return rejectWithValue(error)
     }
@@ -88,7 +120,8 @@ export const userAuthSlice = createSlice({
         userData: null,
         initialised: false,
         loading: false,
-        errorMessage: ''
+        googleAuthloading: false,
+        errorMessage: null
     },
 
     //reducers
@@ -147,7 +180,7 @@ export const userAuthSlice = createSlice({
             state.loading = false
             state.errorMessage = payload?.code
         },
-        //login action types
+        //initState action types
         [initState.pending]: (state) => {
             state.loading = true
         },
@@ -158,6 +191,19 @@ export const userAuthSlice = createSlice({
         },
         [initState.rejected]: (state, { payload }) => {
             state.loading = false
+            state.errorMessage = payload?.code
+        },
+        //google login action types
+        [googlelogIn.pending]: (state) => {
+            state.googleAuthloading = true
+        },
+        [googlelogIn.fulfilled]: (state, { payload }) => {
+            state.googleAuthloading = false
+            state.errorMessage = null
+            state.userData=payload
+        },
+        [googlelogIn.rejected]: (state, { payload }) => {
+            state.googleAuthloading = false
             state.errorMessage = payload?.code
         },
     }
