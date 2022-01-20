@@ -1,22 +1,27 @@
 {
   "files": {
-    "main.css": "/Jadoo/static/css/main.eba04f07.chunk.css",
-    "main.js": "/Jadoo/static/js/main.c042c3e7.chunk.js",
-    "main.js.map": "/Jadoo/static/js/main.c042c3e7.chunk.js.map",
+    "main.css": "/Jadoo/static/css/main.5009f434.chunk.css",
+    "main.js": "/Jadoo/static/js/main.5fe31339.chunk.js",
+    "main.js.map": "/Jadoo/static/js/main.5fe31339.chunk.js.map",
     "runtime-main.js": "/Jadoo/static/js/runtime-main.2d369133.js",
     "runtime-main.js.map": "/Jadoo/static/js/runtime-main.2d369133.js.map",
     "static/css/2.dfc21a38.chunk.css": "/Jadoo/static/css/2.dfc21a38.chunk.css",
-    "static/js/2.f7fa0aa3.chunk.js": "/Jadoo/static/js/2.f7fa0aa3.chunk.js",
-    "static/js/2.f7fa0aa3.chunk.js.map": "/Jadoo/static/js/2.f7fa0aa3.chunk.js.map",
+    "static/js/2.2c2e3562.chunk.js": "/Jadoo/static/js/2.2c2e3562.chunk.js",
+    "static/js/2.2c2e3562.chunk.js.map": "/Jadoo/static/js/2.2c2e3562.chunk.js.map",
     "index.html": "/Jadoo/index.html",
     "static/css/2.dfc21a38.chunk.css.map": "/Jadoo/static/css/2.dfc21a38.chunk.css.map",
-    "static/css/main.eba04f07.chunk.css.map": "/Jadoo/static/css/main.eba04f07.chunk.css.map",
-    "static/js/2.f7fa0aa3.chunk.js.LICENSE.txt": "/Jadoo/static/js/2.f7fa0aa3.chunk.js.LICENSE.txt",
+    "static/css/main.5009f434.chunk.css.map": "/Jadoo/static/css/main.5009f434.chunk.css.map",
+    "static/js/2.2c2e3562.chunk.js.LICENSE.txt": "/Jadoo/static/js/2.2c2e3562.chunk.js.LICENSE.txt",
     "static/media/Ellipse.1666f7a0.svg": "/Jadoo/static/media/Ellipse.1666f7a0.svg",
     "static/media/index.css": "/Jadoo/static/media/GDBoingBold.8dd4778e.ttf",
+    "static/media/blob.8483436e.svg": "/Jadoo/static/media/blob.8483436e.svg",
     "static/media/cityimage.7b4ba0fb.jpg": "/Jadoo/static/media/cityimage.7b4ba0fb.jpg",
     "static/media/github.c5af0a5c.svg": "/Jadoo/static/media/github.c5af0a5c.svg",
+    "static/media/icon-01.dbdf9f48.svg": "/Jadoo/static/media/icon-01.dbdf9f48.svg",
+    "static/media/letter.145262f8.svg": "/Jadoo/static/media/letter.145262f8.svg",
     "static/media/linkedin.34246e9f.svg": "/Jadoo/static/media/linkedin.34246e9f.svg",
+    "static/media/partying_face.6ebf36c3.svg": "/Jadoo/static/media/partying_face.6ebf36c3.svg",
+    "static/media/thinking_face.acf5bc99.svg": "/Jadoo/static/media/thinking_face.acf5bc99.svg",
     "static/media/twitter.eabd0089.svg": "/Jadoo/static/media/twitter.eabd0089.svg",
     "static/media/up.df1b7528.svg": "/Jadoo/static/media/up.df1b7528.svg",
     "static/media/whiteman.1b55a930.jpeg": "/Jadoo/static/media/whiteman.1b55a930.jpeg"
@@ -24,8 +29,8 @@
   "entrypoints": [
     "static/js/runtime-main.2d369133.js",
     "static/css/2.dfc21a38.chunk.css",
-    "static/js/2.f7fa0aa3.chunk.js",
-    "static/css/main.eba04f07.chunk.css",
-    "static/js/main.c042c3e7.chunk.js"
+    "static/js/2.2c2e3562.chunk.js",
+    "static/css/main.5009f434.chunk.css",
+    "static/js/main.5fe31339.chunk.js"
   ]
 }
