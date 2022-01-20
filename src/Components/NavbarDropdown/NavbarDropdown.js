@@ -10,10 +10,12 @@ import { useSelector,useDispatch } from "react-redux";
 import { logOut } from "Features/userAuth";
 import { useHistory } from "react-router-dom";
 
+
+
 export default function MenuDropdown(props) {
   const dispatch = useDispatch()
   const history = useHistory();
-  const {userData}= useSelector(state => state.user)
+  const {userData,user}= useSelector(state => state.user)
   const { customStyle } = props;
   const userFullNames=`${userData?.firstName +" "+ userData?.lastName}`;
 
@@ -26,7 +28,7 @@ export default function MenuDropdown(props) {
       <Menu as="div" className="relative inline-block text-left">
         <div className="">
           <Menu.Button className="inline-flex justify-evenly  w-full px-4 py-2 text-sm font-medium text-gray-700 text-md rounded-md ">
-            <CgUserlane className="w-5 h-5 mx-1 text-blue-700"/>
+            {user?.photoURL ? <img src={user?.photoURL} alt="profile" className="w-8 h-8 rounded-md border-2 mx-1 border-blue-600"></img>:(<CgUserlane className="w-5 h-5 mx-1 text-blue-700"/>)}
             <span className="my-auto">Hey! {userFullNames?.length>15?userData?.firstName:userFullNames}</span>
             <ChevronDownIcon
               className="w-5 h-5 ml-2 -mr-1 my-auto text-violet-200 hover:text-violet-100"
