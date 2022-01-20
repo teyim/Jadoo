@@ -52,7 +52,7 @@ function WelcomeBanner() {
 
             {/* Content */}
             <div className="relative">
-                <h1 className="text-1xl md:text-2xl text-gray-700  mb-1">Greetings <span className='font-medium'>{userFullNames}</span>👋</h1>
+                <h1 className="text-1xl md:text-2xl  mb-1">Greetings <span className='font-medium'>{userFullNames}</span>👋</h1>
                 <p>Here is how your Travel information is looking:</p>
             </div>
 
