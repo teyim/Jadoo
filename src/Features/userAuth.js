@@ -4,9 +4,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, se
 import { doc, setDoc, collection, addDoc, getDoc } from 'firebase/firestore'
 
 const provider = new GoogleAuthProvider()
-provider.setCustomParameters({
-    'login_hint': 'select email address'
-})
+
 //Thunks
 export const signUp = createAsyncThunk('user/signUp', async (data, { dispatch, rejectWithValue }) => {
     try {
@@ -60,7 +58,9 @@ export const logIn = createAsyncThunk('user/logIn', async (data, { dispatch, rej
 
 export const googlelogIn = createAsyncThunk('user/googlelogIn', async (data, { dispatch, rejectWithValue }) => {
     try {
-        
+        provider.setCustomParameters({
+            prompt: 'select_account',   
+        })
         let userfullName=[];
         const data = await signInWithPopup(auth, provider)
         //split diaplay name
