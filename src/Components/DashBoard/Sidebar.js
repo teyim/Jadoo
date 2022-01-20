@@ -4,9 +4,11 @@ import { AiFillHome } from "react-icons/ai"
 import { FaUserCircle } from "react-icons/fa"
 import { RiRoadMapFill, RiLogoutCircleRFill } from "react-icons/ri"
 import { logOut } from 'Features/userAuth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
+    const {user} = useSelector(state => state.user)
 
     const dispatch=useDispatch();
     const {push}=useHistory();
@@ -90,7 +92,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
                     </button>
                     {/* Logo */}
                     <NavLink exact to="/" className="block mx-auto">
-                        <svg width="50" height="50" viewBox="0 0 32 32">
+                        {user?.photoURL ? <img src={user?.photoURL} alt="profile" className="w-12 h-12 rounded-md border-2 mx-1 border-blue-600"></img> : (<svg width="50" height="50" viewBox="0 0 32 32">
                             <defs>
                                 <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
                                     <stop stopColor="#A5B4FC" stopOpacity="0" offset="0%" />
@@ -105,7 +107,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
                             <path d="M18.277.16C26.035 1.267 32 7.938 32 16c0 8.837-7.163 16-16 16a15.937 15.937 0 01-10.426-3.863L18.277.161z" fill="#4F46E5" />
                             <path d="M7.404 2.503l18.339 26.19A15.93 15.93 0 0116 32C7.163 32 0 24.837 0 16 0 10.327 2.952 5.344 7.404 2.503z" fill="url(#logo-a)" />
                             <path d="M2.223 24.14L29.777 7.86A15.926 15.926 0 0132 16c0 8.837-7.163 16-16 16-5.864 0-10.991-3.154-13.777-7.86z" fill="url(#logo-b)" />
-                        </svg>
+                        </svg>)}
+                        
                     </NavLink>
                 </div>
 
