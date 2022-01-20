@@ -30,7 +30,7 @@ const { user} = useSelector(state => state.user)
      <div className="flex justify-center">
     <CgUserlane className="w-10 h-10 my-auto text-blue-700 " />
       <Link
-       to="/"
+       to='/Jadoo'
        className="flex items-center py-2 px-2 text-blue-700 font-boing text-3xl">
        Jadoo.
       </Link>
@@ -82,10 +82,10 @@ const { user} = useSelector(state => state.user)
    {openmobilemenu ? (
     <div className=" md:hidden text-center text-gray-700 flex flex-col content-evenly">
     {!disabled?
-    (<><Link to="/" class=" py-3 text-sm hover:bg-blue-400 border-2">
+    (<><Link to='/Jadoo' class=" py-3 text-sm hover:bg-blue-400 border-2">
       About
      </Link>
-     <Link to="/" class=" py-3 text-sm hover:bg-blue-400 border-b-2">
+     <Link to='/Jadoo' class=" py-3 text-sm hover:bg-blue-400 border-b-2">
       Testimonials
      </Link></>):null
      }  

@@ -31,7 +31,7 @@ function Header({sidebarOpen,setSidebarOpen}) {
                                 <rect x="4" y="17" width="16" height="2" />
                             </svg>
                         </button>
-                        <button onClick={()=>history.replace('/')} className='flex text-lg font-medium'>
+                        <button onClick={()=>history.replace('/Jadoo')} className='flex text-lg font-medium'>
                             <HiOutlineHome className='w-6 h-6 text-gray-700 my-auto mx-1'/>Home
                         </button>
                     </div>

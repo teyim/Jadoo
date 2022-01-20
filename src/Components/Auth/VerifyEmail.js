@@ -8,7 +8,7 @@ export default function VerifyEmail() {
     const {userData} = useSelector(state => state.user)
     const history=useHistory()
     const handleRedirect=()=>{
-        history.replace('/')
+        history.replace('/Jadoo')
     }
     return (
         <div>

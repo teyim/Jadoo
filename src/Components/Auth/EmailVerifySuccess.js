@@ -13,7 +13,7 @@ export default function EmailVerifySuccess() {
                 <img src={successImage} alt='letter' className='w-20 mx-auto' />
                 <p className=" text-gray-700 font-semibold text-2xl text-center py-2">Email successfully verified</p>
                 <Button
-                    click={() => history.push('/')}
+                    click={() => history.push('/Jadoo')}
                     customStyle={
                         " " +
                         ` bg-green-400 text-white font-semibold hover:bg-green-500 mx-auto mt-2 md:mt-0 shadow-md py-3 px-8 `

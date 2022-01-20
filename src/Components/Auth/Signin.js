@@ -29,7 +29,7 @@ function Signin ({ toggleAuthScreen}) {
         dispatch(logIn(value)).then((data) => {
             if (data?.meta?.requestStatus === "fulfilled")
             {
-                replace('/')
+                replace('/Jadoo')
             }
            
         })
@@ -38,7 +38,7 @@ function Signin ({ toggleAuthScreen}) {
     const handleGoogleLogin=()=>{
        dispatch(googlelogIn()).then((data)=>{
            if (data?.meta?.requestStatus === "fulfilled") {
-               replace('/')
+               replace('/Jadoo')
            }
        })
     }

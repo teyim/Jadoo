@@ -24,7 +24,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
     const handleLogOut=()=>{
         dispatch(logOut()).then((data) => {
             if (data?.meta?.requestStatus === "fulfilled") {
-                push('/')
+                push('/Jadoo')
             }
         })
     }
@@ -91,7 +91,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, toggleTabs}) {
                         </svg>
                     </button>
                     {/* Logo */}
-                    <NavLink exact to="/" className="block mx-auto">
+                    <NavLink exact to='/Jadoo' className="block mx-auto">
                         {user?.photoURL ? <img src={user?.photoURL} alt="profile" className="w-12 h-12 rounded-md border-2 mx-1 border-blue-600"></img> : (<svg width="50" height="50" viewBox="0 0 32 32">
                             <defs>
                                 <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">

@@ -21,7 +21,7 @@ const Routing = () => {
  return (
   <Router>
    <Switch>
-    <Route exact path="/" component={App}></Route>
+    <Route exact path="/Jadoo" component={App}></Route>
     <Route path="/searchbus" component={SearchBus}></Route>
     <Route path="/review" component={ReviewBooking}></Route>
     <Route path="/payment" component={Payment}></Route>
