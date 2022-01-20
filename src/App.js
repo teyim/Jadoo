@@ -2,7 +2,6 @@ import React,{useEffect} from "react";
 import Home from "Views/Home";
 import UserDashboard from "Views/UserDashboard";
 import "./App.css";
-import ScrollToTop from "Components/ScrollToTop";
 import { useDispatch,useSelector } from 'react-redux';
 import {auth} from './config/firebaseConfig'
 import { initState,SET_INITIALISED } from './Features/userAuth'
@@ -23,8 +22,6 @@ function App() {
   
   return (
     <>
-    <div>{user?.email}</div>
-      <div>{userData?.email}</div>
      <Home></Home>
     </>
   );
