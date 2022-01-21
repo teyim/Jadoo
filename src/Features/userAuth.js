@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { auth, db } from '../config/firebaseConfig'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, sendPasswordResetEmail, updateProfile, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { doc, setDoc, collection, addDoc, getDoc } from 'firebase/firestore'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import { doc, setDoc, getDoc } from 'firebase/firestore'
 
 const provider = new GoogleAuthProvider()
 
@@ -120,6 +120,7 @@ export const userAuthSlice = createSlice({
         userData: null,
         initialised: false,
         loading: false,
+        initialLoad: false,
         googleAuthloading: false,
         errorMessage: null
     },
@@ -182,15 +183,16 @@ export const userAuthSlice = createSlice({
         },
         //initState action types
         [initState.pending]: (state) => {
-            state.loading = true
+            state.initialLoad = true
         },
         [initState.fulfilled]: (state,{payload}) => {
-            state.loading = false
+            state.initialLoad = false
             state.errorMessage = null
             state.userData = payload
+            state.initialised = true
         },
         [initState.rejected]: (state, { payload }) => {
-            state.loading = false
+            state.initialLoad = false
             state.errorMessage = payload?.code
         },
         //google login action types
