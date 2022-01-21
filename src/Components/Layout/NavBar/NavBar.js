@@ -1,10 +1,7 @@
-import React, { useState,useContext } from "react";
+import React, { useState } from "react";
 import Button from "Components/Button/Button";
 import MenuDropdown from "Components/NavbarDropdown/NavbarDropdown";
 import { Link, useHistory } from "react-router-dom";
-import { ModalContext } from "../../../Context/context";
-import Auth from "Views/Auth";
-import Signup from "Components/Auth/Signup";
 import { useSelector,useDispatch } from "react-redux";
 import { logOut } from "Features/userAuth";
 import { CgUserlane} from 'react-icons/cg'
@@ -37,11 +34,11 @@ const { user} = useSelector(state => state.user)
      </div>
                  {!disabled?
                      (<div className="hidden md:flex my-auto space-x-1 font-medium">
-                         <Link href="/about" className="py-5 px-3 text-gray-700 hover:text-blue-700">
+                         <Link href="/Jadoo" className="py-5 px-3 text-gray-700 hover:text-blue-700">
                              About
                          </Link>
                          <Link
-                             href="/testimonials"
+                             to="/Jadoo"
                              className="py-5 px-3 text-gray-700 hover:text-blue-700">
                              Testimonials
                          </Link>

@@ -1,9 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore"
-import {useEffect}from 'react'
-import { getAuth, onAuthStateChanged} from 'firebase/auth'
-import {SET_USER} from '../Features/userAuth'
-import {useDispatch} from 'react-redux'
+import { getAuth} from 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_KEY,
@@ -17,8 +14,5 @@ const app = initializeApp(firebaseConfig)
 export const auth=getAuth(app)
 export const db = getFirestore(app)
 
-export const useAuth = () => {
-    const dispatch = useDispatch()
-    
-}
+
 

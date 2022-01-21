@@ -1,17 +1,14 @@
-import React, {useCallback,useState,useContext,useEffect}from 'react'
+import React, {useCallback}from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { FcGoogle } from "react-icons/fc";
 import { ImSpinner2} from 'react-icons/im'
 import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input/input'
 import { useFormik } from 'formik';
 import * as yup from 'yup'
 import {googlelogIn, logIn} from '../../Features/userAuth'
-import { ModalContext} from '../../Context/context'
-import { auth } from 'config/firebaseConfig';
-import { useHistory } from 'react-router-dom';
-function Signin ({ toggleAuthScreen}) {
+import { useHistory,Link } from 'react-router-dom';
 
+function Signin ({ toggleAuthScreen}) {
     const {replace}=useHistory()
     const { loading, errorMessage, googleAuthloading} = useSelector(state => state.user)
 
@@ -77,7 +74,7 @@ function Signin ({ toggleAuthScreen}) {
                         <input type="password" id="password" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-200 w-full" placeholder="Password" value={formik.values.password} onChange={(e) => setInputValue('password', e.target.value)} />
                         <p className='text-red-500 text-sm'>{formik.errors.password}</p>
                         <div className=" my-4">
-                            <a href="#">Forget Password?</a>
+                            <Link to='/Jadoo'>Forget Password?</Link>
                         </div>
                         
                     </div>

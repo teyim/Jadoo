@@ -22,7 +22,7 @@ const Tabs = ({ color }) => {
                         role="tablist"
                     >
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                            <a
+                            <button
                                 className={
                                     "text-sm font-semibold uppercase px-5 py-3 shadow-sm border rounded-xs block leading-normal " +
                                     (openTab === 1
@@ -34,14 +34,13 @@ const Tabs = ({ color }) => {
                                     setOpenTab(1);
                                 }}
                                 data-toggle="tab"
-                                href="#link1"
                                 role="tablist"
                             >
                                 Upcoming
-                            </a>
+                            </button>
                         </li>
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center ">
-                            <a
+                            <button
                                 className={
                                     "text-sm font-semibold uppercase px-5 py-3 shadow-sm border rounded-xs block leading-normal " +
                                     (openTab === 2
@@ -53,14 +52,13 @@ const Tabs = ({ color }) => {
                                     setOpenTab(2);
                                 }}
                                 data-toggle="tab"
-                                href="#link2"
                                 role="tablist"
                             >
                                 cancelled
-                            </a>
+                            </button>
                         </li>
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                            <a
+                            <button
                                 className={
                                     "text-sm font-semibold uppercase px-5 py-3 shadow-sm border rounded-xs block leading-normal " +
                                     (openTab === 3
@@ -72,11 +70,10 @@ const Tabs = ({ color }) => {
                                     setOpenTab(3);
                                 }}
                                 data-toggle="tab"
-                                href="#link3"
                                 role="tablist"
                             >
                                 completed
-                            </a>
+                            </button>
                         </li>
                     </ul>
                     <div className={openTab === 1 ? "block" : "hidden"} id="link1">

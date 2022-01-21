@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import githubLogo from "../../../Assets/images/github.svg";
 import linkedInLogo from "../../../Assets/images/linkedin.svg";
 import twitterLogo from "../../../Assets/images/twitter.svg";
@@ -9,11 +10,11 @@ export default function Footer({ customStyle}) {
     <div className={"max-w-8xl bg-gray-200 py-5 px-20 font-rubik"+ customStyle}>
       <div className="md:flex">
         <div className="md:w-1/4 w-full text-center md:text-left mb-3 md:my-0">
-          <a
-            href="#"
+          <Link
+            to='/Jadoo'
             className=" mx-auto py-2 px-2 text-blue-700 font-boing text-4xl">
             Jadoo.
-          </a>
+          </Link>
           <p>
             Your Convenience, Our Priority Book a ride with us. Reconnect with
             your loved ones

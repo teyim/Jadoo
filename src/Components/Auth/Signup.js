@@ -1,22 +1,19 @@
-import React, { useState, useContext,useCallback } from 'react'
-import { FcGoogle } from "react-icons/fc";
+import React, {useCallback } from 'react'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input/input'
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup'
-import { logOut, signUp } from 'Features/userAuth';
-import { ModalContext } from '../../Context/context'
-import { ImSpinner2 } from 'react-icons/im'
+import { signUp } from 'Features/userAuth';
+import { ImSpinner2 } from 'react-icons/im';
 import { useHistory } from "react-router";
 import { auth } from 'config/firebaseConfig';
 import { sendEmailVerification } from 'firebase/auth';
 
 
 const Signup = ({ toggleAuthScreen}) => {
-  const {replace ,push} = useHistory()
+  const {replace} = useHistory()
   const { loading, errorMessage } = useSelector(state => state.user)
-  const [value, setValue] = useState()
 
   const dispatch = useDispatch()
   const schema = yup.object().shape({
